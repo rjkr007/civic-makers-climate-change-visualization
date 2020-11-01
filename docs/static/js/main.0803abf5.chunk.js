@@ -1,0 +1,2 @@
+(this.webpackJsonpclient=this.webpackJsonpclient||[]).push([[0],{10:function(e,t,n){"use strict";n.r(t);var c=n(0),r=n(1),i=n.n(r),s=n(3),o=n.n(s);n(9);var a=function(){return Object(c.jsx)("div",{className:"App",children:"Home Page Placeholder."})};o.a.render(Object(c.jsx)(i.a.StrictMode,{children:Object(c.jsx)(a,{})}),document.getElementById("root"))},9:function(e,t,n){}},[[10,1,2]]]);
+//# sourceMappingURL=main.0803abf5.chunk.js.map

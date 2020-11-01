@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/civic-makers-climate-change-visualization/static/css/main.6dea0f05.chunk.css",
+    "main.js": "/civic-makers-climate-change-visualization/static/js/main.0803abf5.chunk.js",
+    "main.js.map": "/civic-makers-climate-change-visualization/static/js/main.0803abf5.chunk.js.map",
+    "runtime-main.js": "/civic-makers-climate-change-visualization/static/js/runtime-main.cf73547d.js",
+    "runtime-main.js.map": "/civic-makers-climate-change-visualization/static/js/runtime-main.cf73547d.js.map",
+    "static/js/2.5f45ca54.chunk.js": "/civic-makers-climate-change-visualization/static/js/2.5f45ca54.chunk.js",
+    "static/js/2.5f45ca54.chunk.js.map": "/civic-makers-climate-change-visualization/static/js/2.5f45ca54.chunk.js.map",
+    "index.html": "/civic-makers-climate-change-visualization/index.html",
+    "static/css/main.6dea0f05.chunk.css.map": "/civic-makers-climate-change-visualization/static/css/main.6dea0f05.chunk.css.map",
+    "static/js/2.5f45ca54.chunk.js.LICENSE.txt": "/civic-makers-climate-change-visualization/static/js/2.5f45ca54.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.cf73547d.js",
+    "static/js/2.5f45ca54.chunk.js",
+    "static/css/main.6dea0f05.chunk.css",
+    "static/js/main.0803abf5.chunk.js"
+  ]
+}
