@@ -1,59 +1,45 @@
-version: '3.7'
+# To start all app containers and have them talking to each other, in the
+# root folder /, run 'docker-compose up'.
+# Refer to /README.md for more project information.
+
+# Docker Compose File Format Version.
+version: "3.7"
 
 services:
   server:
     build:
       context: ./server
-      dockerfile: Dockerfile
-    image: myapp-server
-    container_name: server
-    command: /usr/src/app/node_modules/.bin/nodemon server.js
     volumes:
-      - ./server/:/usr/src/app:cached
-      - /usr/src/app/node_modules
+      - ./server/:/usr/src/app
+      - /usr/src/app/node_modules # Required to persist node_modules between container stop/starts.
     ports:
-      - "5000:5000"
-    depends_on:
-      - mongo
+      - 5000:5000
+    # depends_on:
+    #   - mongo
     env_file: ./server/.env
-    environment:
-      CHOKIDAR_USEPOLLING: "true"
-    networks:
-      - app-network
-  mongo:
-    image: mongo
-    volumes:
-      - data-volume:/data/db
-    ports:
-      - "27017:27017"
-    networks:
-      - app-network
 
-  react-ui:
+  # May uncomment mongo service later if DB is required.
+  # mongo:
+  #   image: mongo
+  #   volumes:
+  #     - data-volume:/data/db
+  #   ports:
+  #     - "27017:27017"
+
+  client:
     build:
       context: ./client
-    image: myapp-client
-    container_name: react-ui
-    command: npm start
-    volumes:
-      - ./client:/usr/src/app/my-app
-      - /usr/src/app/my-app/node_modules
-    stdin_open: true
+    # This will force server service to build and start before client.
     depends_on:
       - server
+    volumes:
+      - ./client:/usr/src/app
+      - /usr/src/app/node_modules # Required to persist node_modules between container stop/starts.
     ports:
-      - "3000:3000"
+      - 3000:3000
     environment:
       CHOKIDAR_USEPOLLING: "true"
-    networks:
-      - app-network
 
-networks:
-    app-network:
-        driver: bridge
-
-volumes:
-    data-volume:
-    node_modules:
-    web-root:
-      driver: local
+  # This is for persisting mongo data between container stop/starts.
+  # volumes:
+  # data-volume:
