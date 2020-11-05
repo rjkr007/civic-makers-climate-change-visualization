@@ -73,7 +73,15 @@ docker-compose up
 - Wait until both containers are up and running before proceeding.
 - Client is running on port 3000.
 - Server is running/listening on port 5000.
-- To add new npm packages to an image/container, stop that container first, then run
+
+4. When necessary, install only the client dependencies you need (e.g. react-scripts to 'npm run build' and testing libraries).
+
+```
+cd client
+npm i react-scripts etc.
+```
+
+5. When you need to add new npm packages to an image/container, stop that container first, then run
 
 ```
 docker-compose build <service-name>
