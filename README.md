@@ -17,6 +17,7 @@
 - [Contributing](#contributing)
 - [Project Conventions](#project-conventions)
 - [Contributors](#contributors)
+- [Asking for help](#asking-for-help)
 - [Contact](#contact)
 - [Acknowledgements](#acknowledgements)
 
@@ -115,6 +116,16 @@ Contributions are what make the open source community such an amazing place to b
 4. Push to the Branch (`git push origin feature/AmazingFeature`).
 5. Open a Pull Request (PR).
 6. After 1-2 approvals, the PR will be merged.
+
+## Asking for Help
+- Please ask on our slack channel [#civic-makers-climatechange-dev](https://app.slack.com/client/T02A8KY38/C01DALXS62K) if you:
+  - have any questions regarding any of the tasks in our [Trello board](https://trello.com/b/ZXaIkclp)
+  - have any questions relating to the development of the climate change app
+  - need help with a task you are working on from the [Trello board](https://trello.com/b/ZXaIkclp)
+  - have any other questions/proposals you'd like to put to the dev team
+- please be patient with our response, as most of us are only working on this in our spare time
+- If you like to find out more about what everyone is working on, please come to our weekly Wednesday evening catchups to meet the team! Please ask on [#civic-makers-climatechange](https://app.slack.com/client/T02A8KY38/C01CXCQPF8V) slack channel to get an invite.
+- Some of the dev folk will usually hang around after the catchup to discuss on outstanding issues and do some remote pair/mob programming. But if the timing doesn't work for you, don't fret, please ask on [#civic-makers-climatechange-dev](https://app.slack.com/client/T02A8KY38/C01DALXS62K) to arrange a more suitable time to pair!
 
 ## Project Conventions
 
