@@ -1,6 +1,6 @@
 <br />
 <p align="center">
-  <h1 align="center">Civic Makers Climate-Change Visualiation </h1>
+  <h1 align="center"><a href="https://codeforaustralia.github.io/civic-makers-climate-change-visualization/">Civic Makers Climate-Change Visualization</a></h1>
 
   <p align="center">
     An awesome README to tell you everything you need to know about this project.
@@ -14,6 +14,7 @@
 - [Prerequisites to Getting Started](#prerequisites-to-getting-started)
 - [Getting Started](#getting-started)
 - [Accessing the Application](#accessing-the-application)
+- [How to Deploy the Application](#how-to-deploy-the-application)
 - [Contributing](#contributing)
 - [Project Conventions](#project-conventions)
 - [Contributors](#contributors)
@@ -97,7 +98,27 @@ to restart all the containers (with the new packages).
 
 ## Accessing the Application
 
-1. Enter localhost:3000 into any web-browser.
+The application is currently hosted on [Github Pages](https://codeforaustralia.github.io/civic-makers-climate-change-visualization/).
+
+On your local development instance, enter `http://localhost:3000` into any web-browser to view the app.
+
+## How to deploy the application
+
+The application is currently hosted on [Github Pages](https://codeforaustralia.github.io/civic-makers-climate-change-visualization/).
+
+To deploy the app to Github Pages, run the following commands:
+```
+cd client/
+npm install  ## [optional] only install dependencies if you haven't done so earlier!
+npm run deploy
+```
+The command will perform the following actions:
+1. build the react app (using `npm run build`)
+2. push the build artifacts to the `gh-pages` branch
+
+This repo has been set up to serve the content in `gh-pages` branch on Github Pages
+
+The [`gh-pages` tool](https://create-react-app.dev/docs/deployment/#github-pages) was used to ease the deployment of this app.
 
 <!-- ## Roadmap
 
