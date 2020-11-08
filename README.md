@@ -1,6 +1,6 @@
 <br />
 <p align="center">
-  <h1 align="center">Civic Makers Climate-Change Visualiation </h1>
+  <h1 align="center"><a href="https://codeforaustralia.github.io/civic-makers-climate-change-visualization/">Civic Makers Climate-Change Visualization</a></h1>
 
   <p align="center">
     An awesome README to tell you everything you need to know about this project.
