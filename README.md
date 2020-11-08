@@ -106,8 +106,9 @@ On your local development instance, enter `http://localhost:3000` into any web-b
 
 The application is currently hosted on [Github Pages](https://codeforaustralia.github.io/civic-makers-climate-change-visualization/).
 
-To deploy the app to Github Pages, run the following command:
+To deploy the app to Github Pages, run the following commands:
 ```
+cd client/
 npm run deploy
 ```
 The command will perform the following actions:
