@@ -98,13 +98,13 @@ to restart all the containers (with the new packages).
 
 ## Accessing the Application
 
-The application is currently hosted on [Github Pages](https://github.com/hqtan/civic-makers-climate-change-visualization).
+The application is currently hosted on [Github Pages](https://codeforaustralia.github.io/civic-makers-climate-change-visualization/).
 
 On your local development instance, enter `http://localhost:3000` into any web-browser to view the app.
 
 ## How to deploy the application
 
-The application is currently hosted on [Github Pages](https://github.com/hqtan/civic-makers-climate-change-visualization).
+The application is currently hosted on [Github Pages](https://codeforaustralia.github.io/civic-makers-climate-change-visualization/).
 
 To deploy the app to Github Pages, run the following command:
 ```
