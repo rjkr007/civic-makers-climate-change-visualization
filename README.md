@@ -109,6 +109,7 @@ The application is currently hosted on [Github Pages](https://codeforaustralia.g
 To deploy the app to Github Pages, run the following commands:
 ```
 cd client/
+npm install  ## [optional] only install dependencies if you haven't done so earlier!
 npm run deploy
 ```
 The command will perform the following actions:
