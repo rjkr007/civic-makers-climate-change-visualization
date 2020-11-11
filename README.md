@@ -15,8 +15,8 @@
 - [Getting Started](#getting-started)
 - [Accessing the Application](#accessing-the-application)
 - [Contributing](#contributing)
-- [Project Conventions](#project-conventions)
 - [Asking for help](#asking-for-help)
+- [Project Conventions](#project-conventions)
 - [Contributors](#contributors)
 - [Contact](#contact)
 - [Acknowledgements](#acknowledgements)
@@ -117,13 +117,6 @@ Contributions are what make the open source community such an amazing place to b
 5. Open a Pull Request (PR).
 6. After 1-2 approvals, the PR will be merged.
 
-## Project Conventions
-
-- [React functional components](https://programmingwithmosh.com/react/react-functional-components/) (with hooks)
-- [PascalCase](https://techterms.com/definition/pascalcase) for file/folder/component/class names.
-- [camelCase](https://techterms.com/definition/camelcase) for function/method names.
-- CSS TBD.
-
 ## Asking for Help
 - Please ask on our slack channel [#civic-makers-climatechange-dev](https://app.slack.com/client/T02A8KY38/C01DALXS62K) if you:
   - have any questions regarding any of the tasks in our [Trello board](https://trello.com/b/ZXaIkclp)
@@ -133,6 +126,13 @@ Contributions are what make the open source community such an amazing place to b
 - please be patient with our response, as most of us are only working on this in our spare time
 - If you like to find out more about what everyone is working on, please come to our weekly Wednesday evening catchups to meet the team! Please ask on [#civic-makers-climatechange](https://app.slack.com/client/T02A8KY38/C01CXCQPF8V) slack channel to get an invite.
 - Some of the dev folk will usually hang around after the catchup to discuss on outstanding issues and do some remote pair/mob programming. But if the timing doesn't work for you, don't fret, please ask on [#civic-makers-climatechange-dev](https://app.slack.com/client/T02A8KY38/C01DALXS62K) to arrange a more suitable time to pair!
+
+## Project Conventions
+
+- [React functional components](https://programmingwithmosh.com/react/react-functional-components/) (with hooks)
+- [PascalCase](https://techterms.com/definition/pascalcase) for file/folder/component/class names.
+- [camelCase](https://techterms.com/definition/camelcase) for function/method names.
+- CSS TBD.
 
 ## Contributors
 
