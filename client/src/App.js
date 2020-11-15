@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
+
 import "./App.css";
+import ACORNWeatherAnimation from "./vis/acorn_weather/ACORNWeatherAnimation";
 
 const App = () => {
   const [state, setState] = useState(null);
@@ -17,12 +19,17 @@ const App = () => {
       );
   }, []);
 
-  return (
-    <div className="App">
-      <header className="App-header">
+  /*
+        <header className="App-header">
         <h1 className="App-title">Welcome to Michelle</h1>
       </header>
       {state && <p className="App-intro">{state}</p>}
+
+   */
+
+  return (
+    <div className="App">
+      <ACORNWeatherAnimation/>
     </div>
   );
 };
