@@ -1,10 +1,22 @@
 import React from "react";
 import parseCSV from "csv-parse/lib/sync"
 import 'leaflet/dist/leaflet.css';
-import { MapContainer, TileLayer, LayerGroup, CircleMarker, FeatureGroup, Popup, Polygon, Marker, Tooltip } from 'react-leaflet'
+import {
+    MapContainer,
+    TileLayer,
+    LayerGroup,
+    CircleMarker,
+    FeatureGroup,
+    Popup,
+    Polygon,
+    Marker,
+    Tooltip,
+    GeoJSON
+} from 'react-leaflet'
 
 //import weatherData from "./weatherdata.csv";
 import weatherMetaData from "./weatherdata.json";
+import weatherStationGeoJSON from "./australia_weather_stations.json";
 
 const weatherData = `date,1019_max,2012_max,3003_max,4032_max,4106_max,5007_max,5026_max,6011_max,7045_max,8296_max,8297_max,8315_max,9021_max,9518_max,9617_max,9789_max,9999_max,10092_max,10286_max,10916_max,10917_max,11003_max,11052_max,12038_max,13017_max,14015_max,14825_max,15135_max,15590_max,15666_max,16001_max,16098_max,17043_max,17126_max,18012_max,18044_max,18192_max,21133_max,22823_max,23090_max,23373_max,26021_max,26026_max,27045_max,27058_max,28004_max,29063_max,29077_max,30045_max,30124_max,31011_max,32040_max,33119_max,34084_max,36007_max,36031_max,37010_max,38003_max,38026_max,39066_max,39083_max,39128_max,40004_max,40043_max,40842_max,42112_max,43109_max,44021_max,45025_max,46012_max,46126_max,48027_max,48245_max,50017_max,52088_max,53115_max,55024_max,56242_max,58012_max,59151_max,60139_max,61078_max,61363_max,63005_max,65070_max,66062_max,67105_max,68072_max,68151_max,69018_max,70351_max,72150_max,72161_max,74258_max,76031_max,78015_max,80023_max,82039_max,84016_max,84145_max,85072_max,85096_max,86338_max,87031_max,90015_max,91293_max,91311_max,92045_max,94010_max,94029_max,94220_max,96003_max,1019_min,2012_min,3003_min,4032_min,4106_min,5007_min,5026_min,6011_min,7045_min,8296_min,8297_min,8315_min,9021_min,9518_min,9617_min,9789_min,9999_min,10092_min,10286_min,10916_min,10917_min,11003_min,11052_min,12038_min,13017_min,14015_min,14825_min,15135_min,15590_min,15666_min,16001_min,16098_min,17043_min,17126_min,18012_min,18044_min,18192_min,21133_min,22823_min,23090_min,23373_min,26021_min,26026_min,27045_min,27058_min,28004_min,29063_min,29077_min,30045_min,30124_min,31011_min,32040_min,33119_min,34084_min,36007_min,36031_min,37010_min,38003_min,38026_min,39066_min,39083_min,39128_min,40004_min,40043_min,40842_min,42112_min,43109_min,44021_min,45025_min,46012_min,46126_min,48027_min,48245_min,50017_min,52088_min,53115_min,55024_min,56242_min,58012_min,59151_min,60139_min,61078_min,61363_min,63005_min,65070_min,66062_min,67105_min,68072_min,68151_min,69018_min,70351_min,72150_min,72161_min,74258_min,76031_min,78015_min,80023_min,82039_min,84016_min,84145_min,85072_min,85096_min,86338_min,87031_min,90015_min,91293_min,91311_min,92045_min,94010_min,94029_min,94220_min,96003_min
 1910,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
@@ -125,11 +137,15 @@ class ACORNWeatherAnimation extends React.Component {
         super(props);
         this.state = {
             year: 1910,
-            zoom: 5,
+            zoom: 3,
             animateInProgress: true
         };
+        this.props = props;
+        this.minmax = props['minmax'];
 
+        this.key = 0;
         [this.__yearRecords, this.__yearBaselines] = this.__getDataFromCSV();
+        this.__geoJSON = JSON.parse(JSON.stringify(weatherStationGeoJSON));
     }
 
     __nextAnimationFrame() {
@@ -137,6 +153,7 @@ class ACORNWeatherAnimation extends React.Component {
             this.setState({ animateInProgress: false });
         } else {
             this.setYear(this.state.year + 1);
+            setTimeout(this.__nextAnimationFrame.bind(this), (((this.state.year-1910)/10)**2)/2);
         }
     }
 
@@ -172,15 +189,11 @@ class ACORNWeatherAnimation extends React.Component {
      ***************************************************/
 
     render() {
-        const ausCenter = [-27.977986, 135.628836];
+        const ausCenter = [-28.5, 135];
         const ausBounds = [
             [-5.825793, 104.924160],
             [-47.655947, 165.240103]
         ];
-
-        if (this.state.animateInProgress) {
-            setTimeout(this.__nextAnimationFrame.bind(this), 500);
-        }
 
         return (
             <MapContainer
@@ -188,26 +201,25 @@ class ACORNWeatherAnimation extends React.Component {
                 center={ausCenter}
                 zoom={this.state.zoom}
                 zoomSnap={0.1}
-                style={{ height: "85vh", width: "85vw", margin: "65px auto 0 auto" }}>
-                <TileLayer
-                    attribution='Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
-                    url="https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png"
-                />
+                style={{ height: "260px", width: "425px", display: "inline-block" }}
+                attributionControl={false}
+            >
                 <FeatureGroup>
                     <Popup>Popup in FeatureGroup</Popup>
-                    { this.__getCircles() }
+                    { this.__getGeoJSON() }
                 </FeatureGroup>
                 <div style={{
                     position: 'absolute',
-                    top: '10px',
-                    right: '10px',
+                    top: '7px',
+                    left: '7px',
                     boxShadow: '0px 0px 5px #888888',
                     background: "white",
-                    padding: "5px",
+                    padding: "3px 10px",
                     zIndex: 500,
-                    fontSize: "5em"
+                    fontSize: "2em",
+                    opacity: 0.8
                 }}>
-                    { this.state.year }
+                    {this.minmax}: { this.__avg >= 0 ? (`+${this.__avg}`) : this.__avg }°C
                 </div>
             </MapContainer>
         );
@@ -216,48 +228,65 @@ class ACORNWeatherAnimation extends React.Component {
     /**
      * Convert parsed weather data for current year to Circle objects
      */
-    __getCircles() {
-        let out = [];
+    __getGeoJSON() {
         let yearRecord = this.__yearRecords[this.state.year];
+        let total = 0,
+            numItems = 0;
 
-        for (let key in yearRecord) {
-            if (!yearRecord[key]) {
-                // No data
-                continue;
-            } else if (/[0-9]+_max/.test(key)) {
-                // Max data
-                let weatherStation = weatherMetaData[key.split('_')[0]];
-                let weatherStationCoords = [weatherStation['lat'], weatherStation['long']];
-                let yearBaseline = this.__yearBaselines[key]
+        for (let feature of this.__geoJSON['features']) {
+            let key = `${feature['properties']['stnum']}_${this.minmax}`;
+            if (! yearRecord[key]) continue;
 
-                // TODO: Deal with negatives, too!!
-                let differenceFromBaseline = (yearRecord[key]-yearBaseline);
-                //console.log(differenceFromBaseline);
+            let yearBaseline = this.__yearBaselines[key]
+            let diffFromBaseline = yearRecord[key] - yearBaseline;
+            feature['properties']['diffFromBaseline'] = diffFromBaseline;
 
-                out.push(
-                    <CircleMarker center={weatherStationCoords}
-                                  radius={Math.abs(Math.round(differenceFromBaseline*20))}
-                                  pathOptions={{
-                                      color: differenceFromBaseline >= 0 ? "red" : "blue",
-                                      fillColor: differenceFromBaseline >= 0 ? "red" : "blue"
-                                  }}>
-                        <Tooltip direction="bottom" offset={[0, 20]} opacity={1} permanent>
-                            { Math.round(differenceFromBaseline * 10) / 10 }
-                        </Tooltip>
-                    </CircleMarker>
-                );
-            } else if (/[0-9]+_min/.test(key)) {
-                // Min data
-                // TODO!
-            } else {
-                alert("NO MATCH:"+key)
+            if (diffFromBaseline) {
+                total += diffFromBaseline;
+                numItems += 1;
             }
         }
-        return out;
+        if (numItems) this.__avg = parseInt((total / numItems) * 10.0)/10.0;
+        else this.__avg = 0;
+
+        function getColor(d) {
+            return d > 1.4 ? '#800026' :
+                   d > 1.2  ? '#BD0026' :
+                   d > 1.0  ? '#E31A1C' :
+                   d > 0.8  ? '#FC4E2A' :
+                   d > 0.6   ? '#FD8D3C' :
+                   d > 0.4   ? '#ffd69c' :
+                   d > 0.2   ? '#fff1ce' :
+                   d >= 0.0  ? '#ffffff' :
+                   d > -0.2 ? '#e6f2ff' :
+                   d > -0.4  ? '#c5e7ff' :
+                   d > -0.6  ? '#9dd5ff' :
+                   d > -0.8  ? '#62b1ec' :
+                   d > -1.0   ? '#2378be' :
+                   d > -1.2   ? '#07487e' :
+                   d > -1.4   ? '#002440' :
+                                '#00101d'
+                   ;
+        }
+
+        function style(feature) {
+            return {
+                fillColor: getColor(feature.properties.diffFromBaseline),
+                weight: 2,
+                opacity: 1,
+                color: 'white',
+                dashArray: '3',
+                fillOpacity: 1
+            };
+        }
+
+        return <GeoJSON key={this.key++}
+                        data={this.__geoJSON}
+                        style={style} />;
     }
 
     componentDidMount() {
-
+        this.__nextAnimationFrame();
     }
 
     /***************************************************

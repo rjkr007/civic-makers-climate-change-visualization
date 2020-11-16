@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 
 import "./App.css";
 import ACORNWeatherAnimation from "./vis/acorn_weather/ACORNWeatherAnimation";
+import BushfireAnimation from "./vis/bushfires/BushfireAnimation";
+import ACORNWeather from "./vis/acorn_weather/ACORNWeather";
 
 const App = () => {
   const [state, setState] = useState(null);
@@ -29,7 +31,8 @@ const App = () => {
 
   return (
     <div className="App">
-      <ACORNWeatherAnimation/>
+        {/*<BushfireAnimation/>*/}
+        <ACORNWeather/>
     </div>
   );
 };
