@@ -102,7 +102,11 @@ class YearSlider extends React.Component {
      * @param year
      */
     setValue(year) {
+        this.mapSlider.value = year;
         this.setState({ year: year });
+        if (this.props.onChange) {
+            this.props.onChange(year);
+        }
     }
 }
 
