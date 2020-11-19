@@ -91,6 +91,15 @@ class DonationsByPartyBarChart extends React.Component {
             }
             return r;
         }
+        const getRichItem = (key) => {
+            return {
+                height: 40,
+                align: 'right',
+                backgroundColor: {
+                    image: partyIcons[key]
+                }
+            }
+        }
 
         const option = {
             title: {
@@ -137,41 +146,11 @@ class DonationsByPartyBarChart extends React.Component {
                             lineHeight: 20,
                             align: 'right'
                         },
-                        ALP: {
-                            height: 40,
-                            align: 'right',
-                            backgroundColor: {
-                                image: partyIcons.ALP
-                            }
-                        },
-                        LNP: {
-                            height: 40,
-                            align: 'right',
-                            backgroundColor: {
-                                image: partyIcons.LNP
-                            }
-                        },
-                        UAP: {
-                            height: 40,
-                            align: 'right',
-                            backgroundColor: {
-                                image: partyIcons.UAP
-                            }
-                        },
-                        KAP: {
-                            height: 40,
-                            align: 'right',
-                            backgroundColor: {
-                                image: partyIcons.KAP
-                            }
-                        },
-                        OneNation: {
-                            height: 40,
-                            align: 'right',
-                            backgroundColor: {
-                                image: partyIcons.OneNation
-                            }
-                        }
+                        ALP: getRichItem('ALP'),
+                        LNP: getRichItem('LNP'),
+                        UAP: getRichItem('UAP'),
+                        KAP: getRichItem('KAP'),
+                        OneNation: getRichItem('OneNation')
                     }
                 }
             },
