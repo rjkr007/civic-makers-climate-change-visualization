@@ -67,10 +67,13 @@ class DonationsByPartyBarChart extends React.Component {
                 }
             },
             legend: {
-                data: ['City Alpha', 'City Beta', 'City Gamma']
+                top: 50
             },
             grid: {
-                left: 100
+                top: 90,
+                bottom: 40,
+                left: 100,
+                right: 100
             },
             toolbox: {
                 show: true,
@@ -164,7 +167,7 @@ class DonationsByPartyBarChart extends React.Component {
             <Chart options={option}
                    style={{
                        width: (425 * 2) + 'px',
-                       height: "40vh",
+                       height: "38vh",
                        margin: "100px auto 0 auto",
                        border: "1px solid #f0f0f0",
                        boxSizing: "border-box",
