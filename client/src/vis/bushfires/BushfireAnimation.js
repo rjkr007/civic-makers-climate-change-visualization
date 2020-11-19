@@ -41,11 +41,7 @@ class BushfireAnimation extends React.Component {
             columns: true,
             skip_empty_lines: true
         })) {
-            let year = parseInt(record.date.split('/')[0]);
-            let month = parseInt(record.date.split('/')[1]);
-            if (month <= 6) year -= 1;
-            year++;
-
+            let year = parseInt(record.date);
             if (!(year in out)) out[year] = [];
             out[year].push(record);
         }

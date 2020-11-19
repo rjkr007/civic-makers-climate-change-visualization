@@ -10,6 +10,9 @@ import donationsData from "./DonationsData";
 const getDonationsByParty = () => {
     let out = {};
 
+    const allowedParties = new Set(['Liberal/National Party', 'Labor Party', 'Palmer United Party', 'KAP', 'One Nation']);
+    const allowedFossilFuelTypes = new Set(['Coal', 'Oil and Gas', 'Coal and Gas', 'All', 'Gas', 'CSG']);
+
     for (let record of parseCSV(donationsData, {
         columns: true,
         skip_empty_lines: true
@@ -18,6 +21,9 @@ const getDonationsByParty = () => {
             partyGroup = record['Party Group'],
             fossilFuelType = record['Fossil Fuel Type'],
             value = parseInt(record.Value.replace(/,/g, ''));
+
+        if (!allowedParties.has(partyGroup)) throw "unknown party: "+partyGroup
+        if (!allowedFossilFuelTypes.has(fossilFuelType)) throw "unknown fossil fuel type: "+fossilFuelType
 
         if (!(yearRange in out)) out[yearRange] = {};
         if (!(partyGroup in out[yearRange])) out[yearRange][partyGroup] = {};
@@ -43,7 +49,9 @@ class DonationsByPartyBarChart extends React.Component {
         const partyIcons = {
             'ALP': process.env.PUBLIC_URL + '/img/alp.jpg',
             'LNP': process.env.PUBLIC_URL + '/img/lnp.jpeg',
-            'UAP': process.env.PUBLIC_URL + '/img/uap.png'
+            'UAP': process.env.PUBLIC_URL + '/img/uap.png',
+            'KAP': process.env.PUBLIC_URL + '/img/kap.png',
+            'OneNation': process.env.PUBLIC_URL + '/img/one_nation.png'
         };
         const seriesLabel = {
             normal: {
@@ -72,13 +80,12 @@ class DonationsByPartyBarChart extends React.Component {
             grid: {
                 top: 90,
                 bottom: 40,
-                left: 100,
+                left: 120,
                 right: 100
             },
             toolbox: {
-                show: true,
+                show: false,
                 feature: {
-                    saveAsImage: {}
                 }
             },
             xAxis: {
@@ -91,36 +98,50 @@ class DonationsByPartyBarChart extends React.Component {
             yAxis: {
                 type: 'category',
                 inverse: true,
-                data: ['ALP', 'LNP', 'UAP'],
+                data: ['LNP', 'ALP', 'UAP', 'OneNation', 'KAP'],
                 axisLabel: {
                     formatter: function (value) {
-                        return '{' + value + '| }\n{value|' + value + '}';
+                        return `{${value}| }\n{value|${value.replace('OneNation', 'One Nation')}}`;
                     },
                     margin: 20,
                     rich: {
                         value: {
-                            lineHeight: 30,
-                            align: 'center'
+                            lineHeight: 20,
+                            align: 'right'
                         },
                         ALP: {
-                            height: 40,
-                            align: 'center',
+                            height: 30,
+                            align: 'right',
                             backgroundColor: {
                                 image: partyIcons.ALP
                             }
                         },
                         LNP: {
-                            height: 40,
-                            align: 'center',
+                            height: 30,
+                            align: 'right',
                             backgroundColor: {
                                 image: partyIcons.LNP
                             }
                         },
                         UAP: {
-                            height: 40,
-                            align: 'center',
+                            height: 30,
+                            align: 'right',
                             backgroundColor: {
                                 image: partyIcons.UAP
+                            }
+                        },
+                        KAP: {
+                            height: 30,
+                            align: 'right',
+                            backgroundColor: {
+                                image: partyIcons.KAP
+                            }
+                        },
+                        OneNation: {
+                            height: 30,
+                            align: 'right',
+                            backgroundColor: {
+                                image: partyIcons.OneNation
                             }
                         }
                     }
@@ -134,7 +155,9 @@ class DonationsByPartyBarChart extends React.Component {
                     data: [
                         donations[yearString]['Liberal/National Party']['Coal'],
                         donations[yearString]['Labor Party']['Coal'],
-                        (donations[yearString]['Palmer United Party'] || {})['Coal'] || null
+                        (donations[yearString]['Palmer United Party'] || {})['Coal'] || null,
+                        (donations[yearString]['One Nation'] || {})['Coal'] || null,
+                        (donations[yearString]['KAP'] || {})['Coal'] || null,
                     ],
                     label: seriesLabel
                 },
@@ -146,7 +169,9 @@ class DonationsByPartyBarChart extends React.Component {
                     data: [
                         donations[yearString]['Liberal/National Party']['Oil and Gas'],
                         donations[yearString]['Labor Party']['Oil and Gas'],
-                        (donations[yearString]['Palmer United Party'] || {})['Oil and Gas'] || null
+                        (donations[yearString]['Palmer United Party'] || {})['Oil and Gas'] || null,
+                        (donations[yearString]['One Nation'] || {})['Oil and Gas'] || null,
+                        (donations[yearString]['KAP'] || {})['Oil and Gas'] || null,
                     ]
                 },
                 {
@@ -157,9 +182,50 @@ class DonationsByPartyBarChart extends React.Component {
                     data: [
                         donations[yearString]['Liberal/National Party']['Coal and Gas'],
                         donations[yearString]['Labor Party']['Coal and Gas'],
-                        (donations[yearString]['Palmer United Party'] || {})['Coal and Gas'] || null
+                        (donations[yearString]['Palmer United Party'] || {})['Coal and Gas'] || null,
+                        (donations[yearString]['One Nation'] || {})['Coal and Gas'] || null,
+                        (donations[yearString]['KAP'] || {})['Coal and Gas'] || null,
                     ]
-                }
+                },
+                {
+                    name: 'All',
+                    type: 'bar',
+                    stack: true,
+                    data: [
+                        donations[yearString]['Liberal/National Party']['All'],
+                        donations[yearString]['Labor Party']['All'],
+                        (donations[yearString]['Palmer United Party'] || {})['All'] || null,
+                        (donations[yearString]['One Nation'] || {})['All'] || null,
+                        (donations[yearString]['KAP'] || {})['All'] || null,
+                    ],
+                    label: seriesLabel
+                },
+                {
+                    name: 'Gas',
+                    type: 'bar',
+                    stack: true,
+                    label: seriesLabel,
+                    data: [
+                        donations[yearString]['Liberal/National Party']['Gas'],
+                        donations[yearString]['Labor Party']['Gas'],
+                        (donations[yearString]['Palmer United Party'] || {})['Gas'] || null,
+                        (donations[yearString]['One Nation'] || {})['Gas'] || null,
+                        (donations[yearString]['KAP'] || {})['Gas'] || null,
+                    ]
+                },
+                {
+                    name: 'CSG',
+                    type: 'bar',
+                    stack: true,
+                    label: seriesLabel,
+                    data: [
+                        donations[yearString]['Liberal/National Party']['CSG'],
+                        donations[yearString]['Labor Party']['CSG'],
+                        (donations[yearString]['Palmer United Party'] || {})['CSG'] || null,
+                        (donations[yearString]['One Nation'] || {})['CSG'] || null,
+                        (donations[yearString]['KAP'] || {})['CSG'] || null,
+                    ]
+                },
             ]
         };
 
@@ -167,7 +233,7 @@ class DonationsByPartyBarChart extends React.Component {
             <Chart options={option}
                    style={{
                        width: (425 * 2) + 'px',
-                       height: "38vh",
+                       height: "450px",
                        margin: "100px auto 0 auto",
                        border: "1px solid #f0f0f0",
                        boxSizing: "border-box",
