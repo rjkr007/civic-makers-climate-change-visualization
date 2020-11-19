@@ -52,7 +52,6 @@ class DonationsByPartyBarChart extends React.Component {
             }).split('.')[0];
             return r;
         }
-
         const partyIcons = {
             'ALP': process.env.PUBLIC_URL + '/img/alp.jpg',
             'LNP': process.env.PUBLIC_URL + '/img/lnp.jpeg',
@@ -68,7 +67,6 @@ class DonationsByPartyBarChart extends React.Component {
                 formatter: audFormatter
             }
         }
-
         const getData = (key) => {
             return [
                 donations[yearString]['Liberal/National Party'][key],
@@ -100,7 +98,6 @@ class DonationsByPartyBarChart extends React.Component {
                 }
             }
         }
-
         const option = {
             title: {
                 text: 'Donations by Fossil Fuel Companies ' + yearString
@@ -111,20 +108,9 @@ class DonationsByPartyBarChart extends React.Component {
                     type: 'shadow'
                 }
             },
-            legend: {
-                top: 50
-            },
-            grid: {
-                top: 90,
-                bottom: 40,
-                left: 140,
-                right: 100
-            },
-            toolbox: {
-                show: false,
-                feature: {
-                }
-            },
+            legend: { top: 50 },
+            grid: { top: 90, bottom: 40, left: 140, right: 100 },
+            toolbox: { show: false, feature: {} },
             xAxis: {
                 type: 'value',
                 name: 'Dollars (AUD)',
@@ -156,7 +142,6 @@ class DonationsByPartyBarChart extends React.Component {
             },
             series: getBars()
         };
-
         return <>
             <Chart options={option}
                    style={{
