@@ -46,6 +46,13 @@ class DonationsByPartyBarChart extends React.Component {
         const yearString = `${year - 1}-${year}`
         const donations = getDonationsByParty();
 
+        const audFormatter = (value) => {
+            let r = value.value.toLocaleString('en-AU', {
+                style: 'currency', currency: 'AUD'
+            }).split('.')[0];
+            return r;
+        }
+
         const partyIcons = {
             'ALP': process.env.PUBLIC_URL + '/img/alp.jpg',
             'LNP': process.env.PUBLIC_URL + '/img/lnp.jpeg',
@@ -57,8 +64,32 @@ class DonationsByPartyBarChart extends React.Component {
             normal: {
                 show: true,
                 textBorderColor: '#333',
-                textBorderWidth: 2
+                textBorderWidth: 2,
+                formatter: audFormatter
             }
+        }
+
+        const getData = (key) => {
+            return [
+                donations[yearString]['Liberal/National Party'][key],
+                donations[yearString]['Labor Party'][key],
+                (donations[yearString]['Palmer United Party'] || {})[key] || null,
+                (donations[yearString]['One Nation'] || {})[key] || null,
+                (donations[yearString]['KAP'] || {})[key] || null,
+            ];
+        }
+        const getBars = () => {
+            let r = [];
+            for (let key of ['Coal', 'Oil and Gas', 'Coal and Gas', 'All', 'Gas', 'CSG']) {
+                r.push({
+                    name: key,
+                    type: 'bar',
+                    stack: true,
+                    data: getData(key),
+                    label: seriesLabel
+                });
+            }
+            return r;
         }
 
         const option = {
@@ -69,9 +100,6 @@ class DonationsByPartyBarChart extends React.Component {
                 trigger: 'axis',
                 axisPointer: {
                     type: 'shadow'
-                },
-                axisLabel: {
-                    formatter: '${value}'
                 }
             },
             legend: {
@@ -80,7 +108,7 @@ class DonationsByPartyBarChart extends React.Component {
             grid: {
                 top: 90,
                 bottom: 40,
-                left: 120,
+                left: 140,
                 right: 100
             },
             toolbox: {
@@ -110,35 +138,35 @@ class DonationsByPartyBarChart extends React.Component {
                             align: 'right'
                         },
                         ALP: {
-                            height: 30,
+                            height: 40,
                             align: 'right',
                             backgroundColor: {
                                 image: partyIcons.ALP
                             }
                         },
                         LNP: {
-                            height: 30,
+                            height: 40,
                             align: 'right',
                             backgroundColor: {
                                 image: partyIcons.LNP
                             }
                         },
                         UAP: {
-                            height: 30,
+                            height: 40,
                             align: 'right',
                             backgroundColor: {
                                 image: partyIcons.UAP
                             }
                         },
                         KAP: {
-                            height: 30,
+                            height: 40,
                             align: 'right',
                             backgroundColor: {
                                 image: partyIcons.KAP
                             }
                         },
                         OneNation: {
-                            height: 30,
+                            height: 40,
                             align: 'right',
                             backgroundColor: {
                                 image: partyIcons.OneNation
@@ -147,93 +175,14 @@ class DonationsByPartyBarChart extends React.Component {
                     }
                 }
             },
-            series: [
-                {
-                    name: 'Coal',
-                    type: 'bar',
-                    stack: true,
-                    data: [
-                        donations[yearString]['Liberal/National Party']['Coal'],
-                        donations[yearString]['Labor Party']['Coal'],
-                        (donations[yearString]['Palmer United Party'] || {})['Coal'] || null,
-                        (donations[yearString]['One Nation'] || {})['Coal'] || null,
-                        (donations[yearString]['KAP'] || {})['Coal'] || null,
-                    ],
-                    label: seriesLabel
-                },
-                {
-                    name: 'Oil and Gas',
-                    type: 'bar',
-                    stack: true,
-                    label: seriesLabel,
-                    data: [
-                        donations[yearString]['Liberal/National Party']['Oil and Gas'],
-                        donations[yearString]['Labor Party']['Oil and Gas'],
-                        (donations[yearString]['Palmer United Party'] || {})['Oil and Gas'] || null,
-                        (donations[yearString]['One Nation'] || {})['Oil and Gas'] || null,
-                        (donations[yearString]['KAP'] || {})['Oil and Gas'] || null,
-                    ]
-                },
-                {
-                    name: 'Coal and Gas',
-                    type: 'bar',
-                    stack: true,
-                    label: seriesLabel,
-                    data: [
-                        donations[yearString]['Liberal/National Party']['Coal and Gas'],
-                        donations[yearString]['Labor Party']['Coal and Gas'],
-                        (donations[yearString]['Palmer United Party'] || {})['Coal and Gas'] || null,
-                        (donations[yearString]['One Nation'] || {})['Coal and Gas'] || null,
-                        (donations[yearString]['KAP'] || {})['Coal and Gas'] || null,
-                    ]
-                },
-                {
-                    name: 'All',
-                    type: 'bar',
-                    stack: true,
-                    data: [
-                        donations[yearString]['Liberal/National Party']['All'],
-                        donations[yearString]['Labor Party']['All'],
-                        (donations[yearString]['Palmer United Party'] || {})['All'] || null,
-                        (donations[yearString]['One Nation'] || {})['All'] || null,
-                        (donations[yearString]['KAP'] || {})['All'] || null,
-                    ],
-                    label: seriesLabel
-                },
-                {
-                    name: 'Gas',
-                    type: 'bar',
-                    stack: true,
-                    label: seriesLabel,
-                    data: [
-                        donations[yearString]['Liberal/National Party']['Gas'],
-                        donations[yearString]['Labor Party']['Gas'],
-                        (donations[yearString]['Palmer United Party'] || {})['Gas'] || null,
-                        (donations[yearString]['One Nation'] || {})['Gas'] || null,
-                        (donations[yearString]['KAP'] || {})['Gas'] || null,
-                    ]
-                },
-                {
-                    name: 'CSG',
-                    type: 'bar',
-                    stack: true,
-                    label: seriesLabel,
-                    data: [
-                        donations[yearString]['Liberal/National Party']['CSG'],
-                        donations[yearString]['Labor Party']['CSG'],
-                        (donations[yearString]['Palmer United Party'] || {})['CSG'] || null,
-                        (donations[yearString]['One Nation'] || {})['CSG'] || null,
-                        (donations[yearString]['KAP'] || {})['CSG'] || null,
-                    ]
-                },
-            ]
+            series: getBars()
         };
 
         return <>
             <Chart options={option}
                    style={{
                        width: (425 * 2) + 'px',
-                       height: "450px",
+                       height: "500px",
                        margin: "100px auto 0 auto",
                        border: "1px solid #f0f0f0",
                        boxSizing: "border-box",
