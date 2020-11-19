@@ -18,6 +18,12 @@ class DonationsByPartyBarChart extends React.Component {
      * Data Processing
      ***************************************************/
 
+    /**
+     * Parse the CSV donations data
+     *
+     * @returns {{}}
+     * @private
+     */
     __getDonationsByParty() {
         let out = {};
 
@@ -65,9 +71,15 @@ class DonationsByPartyBarChart extends React.Component {
      * Template Rendering
      ***************************************************/
 
+    /**
+     * The icons associated with each political party's
+     * links to the file in the "/client/public/imgs/" folder
+     *
+     * @type {{OneNation: string, ALP: string, UAP: string, KAP: string, LNP: string}}
+     */
     PARTY_ICONS = {
-        'ALP': process.env.PUBLIC_URL + '/img/alp.jpg',
-        'LNP': process.env.PUBLIC_URL + '/img/lnp.jpeg',
+        'ALP': process.env.PUBLIC_URL + '/img/alp.png',
+        'LNP': process.env.PUBLIC_URL + '/img/lnp.png',
         'UAP': process.env.PUBLIC_URL + '/img/uap.png',
         'KAP': process.env.PUBLIC_URL + '/img/kap.png',
         'OneNation': process.env.PUBLIC_URL + '/img/one_nation.png'
@@ -76,7 +88,7 @@ class DonationsByPartyBarChart extends React.Component {
     render() {
         const year = this.state.year,
               yearString = `${year - 1}-${year}`,
-              [max, series] = this.__getSeries(yearString);
+              [max, yAxisData, series] = this.__getSeries(yearString);
         this.__max = max;
 
         const option = {
@@ -87,14 +99,34 @@ class DonationsByPartyBarChart extends React.Component {
                 trigger: 'axis',
                 axisPointer: {
                     type: 'shadow'
+                },
+                formatter: (params) => {
+                    console.log(JSON.stringify(params));
+                    let that = this;
+                    return (
+                        `<div>Party ${params[0].axisValueLabel}</div>` +
+                        params.map(param => {
+                            let value = that.__formatAUDollar(param);
+                            return (
+                                `<div style="text-align: left; border-bottom: 1px solid ${param.color}; border-left: 8px solid ${param.color}; padding-left: 3px;">` +
+                                `<span style="padding: 0; display: inline; margin: 0">` +
+                                `${param.seriesName}&nbsp;&nbsp;` +
+                                `<span style="float: right; padding: 0; display: inline; margin: 0">` +
+                                `${value}` +
+                                `</span>` +
+                                `</span>` +
+                                `</div>`
+                            );
+                        }).join('')
+                    );
                 }
             },
             legend: { top: 50 },
-            grid: { top: 90, bottom: 40, left: 140, right: 100 },
+            grid: { top: 90, bottom: 40, left: 140, right: 50 },
             toolbox: { show: false, feature: {} },
             xAxis: {
                 type: 'value',
-                name: 'Dollars (AUD)',
+                name: '$AUD',
                 axisLabel: {
                     formatter: '${value}'
                 }
@@ -102,7 +134,7 @@ class DonationsByPartyBarChart extends React.Component {
             yAxis: {
                 type: 'category',
                 inverse: true,
-                data: ['LNP', 'ALP', 'UAP', 'OneNation', 'KAP'],
+                data: yAxisData,
                 axisLabel: {
                     formatter: function (value) {
                         return `{${value}| }\n{value|${value.replace('OneNation', 'One Nation')}}`;
@@ -129,7 +161,7 @@ class DonationsByPartyBarChart extends React.Component {
                 options={option}
                 style={{
                     width: (425 * 2) + 'px',
-                    height: "500px",
+                    height: "400px",
                     margin: "100px auto 0 auto",
                     border: "1px solid #f0f0f0",
                     boxSizing: "border-box",
@@ -163,6 +195,13 @@ class DonationsByPartyBarChart extends React.Component {
         </>;
     }
 
+    /**
+     * Get the party image configuration for the Y axis
+     *
+     * @param key
+     * @returns {{backgroundColor: {image: *}, align: string, height: number}}
+     * @private
+     */
     __getYAxisImageItem(key) {
         return {
             height: 40,
@@ -173,23 +212,52 @@ class DonationsByPartyBarChart extends React.Component {
         }
     }
 
+    /**
+     * Get the series data for eCharts
+     *
+     * @param yearString
+     * @returns {(number|[])[]}
+     * @private
+     */
     __getSeries(yearString) {
         let r = [],
+            yAxisData = new Set(),
             max = 0,
-            donations = this.__donationsByParty;
+            donations = this.__donationsByParty,
+            keys = ['Oil and Gas', 'Coal', 'Coal and Gas', 'All', 'Gas', 'CSG'],
+            parties = [
+                ['Liberal/National Party', 'LNP'],
+                ['Labor Party', 'ALP'],
+                ['Palmer United Party', 'UAP'],
+                ['One Nation', 'OneNation'],
+                ['KAP', 'KAP']
+            ];
 
-        for (let key of ['Oil and Gas', 'Coal', 'Coal and Gas', 'All', 'Gas', 'CSG']) {
+        for (let key of keys) {
+            for (let [partyKey, partyMapping] of parties) {
+                if ((donations[yearString][partyKey] || {})[key]) {
+                    yAxisData.add(partyMapping)
+                }
+            }
+        }
+        let yAxisOut = [];
+        for (let [partyKey, partyMapping] of parties) {
+            if (yAxisData.has(partyMapping)) yAxisOut.push(partyMapping)
+        }
+
+        for (let key of keys) {
+            let data = [];
+            for (let [partyKey, partyMapping] of parties) {
+                if (yAxisData.has(partyMapping)) {
+                    data.push((donations[yearString][partyKey] || {})[key] || null);
+                }
+            }
+
             r.push({
                 name: key,
                 type: 'bar',
                 stack: true,
-                data: [
-                    donations[yearString]['Liberal/National Party'][key],
-                    donations[yearString]['Labor Party'][key],
-                    (donations[yearString]['Palmer United Party'] || {})[key] || null,
-                    (donations[yearString]['One Nation'] || {})[key] || null,
-                    (donations[yearString]['KAP'] || {})[key] || null,
-                ],
+                data: data,
                 label: {
                     normal: {
                         show: true,
@@ -212,15 +280,21 @@ class DonationsByPartyBarChart extends React.Component {
             }
             if (i_max > max) max = i_max
         }
-        return [max, r];
+
+        return [max, yAxisOut, r];
     }
 
+    /**
+     * Format an eCharts value object as Australian currency
+     *
+     * @param value an object with a 'value' key
+     * @returns {string}
+     * @private
+     */
     __formatAUDollar(value) {
-        console.log(value)
-
-        return value.value.toLocaleString('en-AU', {
+        return value.value ? value.value.toLocaleString('en-AU', {
             style: 'currency', currency: 'AUD'
-        }).split('.')[0];
+        }).split('.')[0] : '-';
     }
 
     /***************************************************
@@ -232,6 +306,12 @@ class DonationsByPartyBarChart extends React.Component {
         setTimeout(this.__nextAnimationFrame.bind(this), 500);
     }
 
+    /**
+     * Walk through each year, to show how much
+     * donations have changed throughout the years
+     *
+     * @private
+     */
     __nextAnimationFrame() {
         if (!this.yearSlider) return;
         let year = this.yearSlider.getValue()
