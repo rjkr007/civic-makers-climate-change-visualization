@@ -1,21 +1,10 @@
 import React from "react";
 import parseCSV from "csv-parse/lib/sync"
 import 'leaflet/dist/leaflet.css';
-import {
-    MapContainer,
-    TileLayer,
-    LayerGroup,
-    CircleMarker,
-    FeatureGroup,
-    Popup,
-    Polygon,
-    Marker,
-    Tooltip,
-    GeoJSON
-} from 'react-leaflet'
+import { MapContainer, FeatureGroup, Popup, GeoJSON } from 'react-leaflet'
 
 //import weatherData from "./weatherdata.csv";
-import weatherMetaData from "./weatherdata.json";
+//import weatherMetaData from "./weatherdata.json";
 import weatherStationGeoJSON from "./australia_weather_stations.json";
 import weatherData from "./ACORNWeatherData";
 
@@ -105,7 +94,7 @@ class ACORNWeatherAnimation extends React.Component {
     }
 
     /**
-     * Convert parsed weather data for current year to Circle objects
+     * Convert parsed weather data for current year to GeoJSON format
      */
     __getGeoJSON() {
         let yearRecord = this.__yearRecords[this.state.year];

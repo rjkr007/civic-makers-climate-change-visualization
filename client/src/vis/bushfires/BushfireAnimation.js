@@ -1,7 +1,7 @@
 import React from "react";
 import parseCSV from "csv-parse/lib/sync";
 import 'leaflet/dist/leaflet.css';
-import { MapContainer, TileLayer, LayerGroup, Circle, FeatureGroup, Popup, Polygon, Marker, Tooltip } from 'react-leaflet';
+import { MapContainer, TileLayer, Circle, FeatureGroup, Popup } from 'react-leaflet';
 import bushfireData from "./BushfireData";
 
 

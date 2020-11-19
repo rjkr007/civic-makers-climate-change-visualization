@@ -1,6 +1,6 @@
 import React from "react";
 import ACORNWeatherAnimation from "./ACORNWeatherAnimation";
-import YearSlider from "./YearSlider";
+import YearSlider from "../YearSlider";
 
 class ACORNWeather extends React.Component {
     constructor(props) {

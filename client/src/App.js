@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import BushfireAnimation from "./vis/bushfires/BushfireAnimation";
 import ACORNWeather from "./vis/acorn_weather/ACORNWeather";
+import DonationsByPartyBarChart from "./vis/donations/DonationsByPartyBarChart";
 
 const App = () => {
   const [state, setState] = useState(null);
@@ -32,6 +33,7 @@ const App = () => {
     <div className="App">
         <ACORNWeather/>
         <BushfireAnimation/>
+        <DonationsByPartyBarChart/>
     </div>
   );
 };
