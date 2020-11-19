@@ -14,16 +14,6 @@ class DonationsByPartyBarChart extends React.Component {
         this.__donationsByParty = this.__getDonationsByParty();
     }
 
-    __nextAnimationFrame() {
-        if (!this.yearSlider) return;
-        let year = this.yearSlider.getValue()
-
-        if (year !== 2018) {
-            this.yearSlider.setValue(year+1)
-            setTimeout(this.__nextAnimationFrame.bind(this), 500);
-        }
-    }
-
     /***************************************************
      * Data Processing
      ***************************************************/
@@ -31,6 +21,8 @@ class DonationsByPartyBarChart extends React.Component {
     __getDonationsByParty() {
         let out = {};
 
+        // A bit of validation, to make
+        // sure we're using all the data
         const allowedParties = new Set([
             'Liberal/National Party', 'Labor Party',
             'Palmer United Party', 'KAP', 'One Nation'
@@ -84,43 +76,8 @@ class DonationsByPartyBarChart extends React.Component {
     render() {
         const year = this.state.year,
               yearString = `${year - 1}-${year}`,
-              donations = this.__donationsByParty;
-
-        const getBars = () => {
-            let r = [];
-            for (let key of ['Coal', 'Oil and Gas', 'Coal and Gas', 'All', 'Gas', 'CSG']) {
-                r.push({
-                    name: key,
-                    type: 'bar',
-                    stack: true,
-                    data: [
-                        donations[yearString]['Liberal/National Party'][key],
-                        donations[yearString]['Labor Party'][key],
-                        (donations[yearString]['Palmer United Party'] || {})[key] || null,
-                        (donations[yearString]['One Nation'] || {})[key] || null,
-                        (donations[yearString]['KAP'] || {})[key] || null,
-                    ],
-                    label: {
-                        normal: {
-                            show: true,
-                            textBorderColor: '#333',
-                            textBorderWidth: 2,
-                            formatter: this.__formatAUDollar
-                        }
-                    }
-                });
-            }
-            return r;
-        }
-        const getRichItem = (key) => {
-            return {
-                height: 40,
-                align: 'right',
-                backgroundColor: {
-                    image: this.PARTY_ICONS[key]
-                }
-            }
-        }
+              [max, series] = this.__getSeries(yearString);
+        this.__max = max;
 
         const option = {
             title: {
@@ -156,27 +113,29 @@ class DonationsByPartyBarChart extends React.Component {
                             lineHeight: 20,
                             align: 'right'
                         },
-                        ALP: getRichItem('ALP'),
-                        LNP: getRichItem('LNP'),
-                        UAP: getRichItem('UAP'),
-                        KAP: getRichItem('KAP'),
-                        OneNation: getRichItem('OneNation')
+                        ALP: this.__getYAxisImageItem('ALP'),
+                        LNP: this.__getYAxisImageItem('LNP'),
+                        UAP: this.__getYAxisImageItem('UAP'),
+                        KAP: this.__getYAxisImageItem('KAP'),
+                        OneNation: this.__getYAxisImageItem('OneNation')
                     }
                 }
             },
-            series: getBars()
+            series: series
         };
 
         return <>
-            <Chart options={option}
-                   style={{
-                       width: (425 * 2) + 'px',
-                       height: "500px",
-                       margin: "100px auto 0 auto",
-                       border: "1px solid #f0f0f0",
-                       boxSizing: "border-box",
-                       padding: "10px"
-                   }}/>
+            <Chart
+                options={option}
+                style={{
+                    width: (425 * 2) + 'px',
+                    height: "500px",
+                    margin: "100px auto 0 auto",
+                    border: "1px solid #f0f0f0",
+                    boxSizing: "border-box",
+                    padding: "10px"
+                }}
+            />
             <div style={{
                 margin: "-5px auto 0 auto",
                 width: (425 * 2) + 'px',
@@ -190,28 +149,97 @@ class DonationsByPartyBarChart extends React.Component {
                     Mauris ipsum massa, rhoncus a laoreet nec, efficitur at arcu.
                 </div>
 
-                <YearSlider ref={el => this.yearSlider = el}
-                            year={2013}
-                            minYear={2013}
-                            maxYear={2018}
-                            inBetweenYears={true}
-                            onChange={year => {
-                                this.setState({ year: year });
-                            }}/>
-
+                <YearSlider
+                    ref={el => this.yearSlider = el}
+                    year={2013}
+                    minYear={2013}
+                    maxYear={2018}
+                    inBetweenYears={true}
+                    onChange={year => {
+                        this.setState({ year: year });
+                    }}
+                />
             </div>
         </>;
     }
 
+    __getYAxisImageItem(key) {
+        return {
+            height: 40,
+            align: 'right',
+            backgroundColor: {
+                image: this.PARTY_ICONS[key]
+            }
+        }
+    }
+
+    __getSeries(yearString) {
+        let r = [],
+            max = 0,
+            donations = this.__donationsByParty;
+
+        for (let key of ['Oil and Gas', 'Coal', 'Coal and Gas', 'All', 'Gas', 'CSG']) {
+            r.push({
+                name: key,
+                type: 'bar',
+                stack: true,
+                data: [
+                    donations[yearString]['Liberal/National Party'][key],
+                    donations[yearString]['Labor Party'][key],
+                    (donations[yearString]['Palmer United Party'] || {})[key] || null,
+                    (donations[yearString]['One Nation'] || {})[key] || null,
+                    (donations[yearString]['KAP'] || {})[key] || null,
+                ],
+                label: {
+                    normal: {
+                        show: true,
+                        textBorderColor: '#333',
+                        textBorderWidth: 2,
+                        formatter: (value) => {
+                            if (value.value < this.__max/15.0) {
+                                // Only display the number if there's enough space!
+                                return '';
+                            }
+                            return this.__formatAUDollar(value);
+                        }
+                    }
+                }
+            });
+
+            let i_max = 0;
+            for (let x of r[r.length-1]['data']) {
+                i_max += x||0;
+            }
+            if (i_max > max) max = i_max
+        }
+        return [max, r];
+    }
+
     __formatAUDollar(value) {
+        console.log(value)
+
         return value.value.toLocaleString('en-AU', {
             style: 'currency', currency: 'AUD'
         }).split('.')[0];
     }
 
+    /***************************************************
+     * Initial Animation
+     ***************************************************/
+
     componentDidMount() {
         // Animate once only!
         setTimeout(this.__nextAnimationFrame.bind(this), 500);
+    }
+
+    __nextAnimationFrame() {
+        if (!this.yearSlider) return;
+        let year = this.yearSlider.getValue()
+
+        if (year !== 2018) {
+            this.yearSlider.setValue(year+1)
+            setTimeout(this.__nextAnimationFrame.bind(this), 500);
+        }
     }
 }
 
