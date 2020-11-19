@@ -3,14 +3,15 @@ import parseCSV from "csv-parse/lib/sync";
 import 'leaflet/dist/leaflet.css';
 import { MapContainer, TileLayer, Circle, FeatureGroup, Popup } from 'react-leaflet';
 import bushfireData from "./BushfireData";
+import YearSlider from "../YearSlider";
 
 
 class BushfireAnimation extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            year: 2002,
-            zoom: 5,
+            year: 2003,
+            zoom: 3.75,
             animateInProgress: true
         };
 
@@ -18,7 +19,7 @@ class BushfireAnimation extends React.Component {
     }
 
     __nextAnimationFrame() {
-        if (this.state.year === 2019) {
+        if (this.state.year === 2020) {
             this.setState({ animateInProgress: false });
         } else {
             this.setYear(this.state.year + 1);
@@ -43,6 +44,7 @@ class BushfireAnimation extends React.Component {
             let year = parseInt(record.date.split('/')[0]);
             let month = parseInt(record.date.split('/')[1]);
             if (month <= 6) year -= 1;
+            year++;
 
             if (!(year in out)) out[year] = [];
             out[year].push(record);
@@ -55,19 +57,23 @@ class BushfireAnimation extends React.Component {
      ***************************************************/
 
     render() {
-        const ausCenter = [-27.977986, 135.628836];
+        const ausCenter = [-28.3, 135.628836];
         const ausBounds = [
             [-5.825793, 104.924160],
             [-47.655947, 165.240103]
         ];
 
-        return (
+        return <>
             <MapContainer
                 bounds={ausBounds}
                 center={ausCenter}
                 zoom={this.state.zoom}
                 zoomSnap={0.1}
-                style={{ height: "85vh", width: "85vw", margin: "65px auto 0 auto" }}>
+                style={{
+                    height: "425px",
+                    width: (425 * 2) + "px",
+                    margin: "65px auto 0 auto"
+                }}>
                 <TileLayer
                     attribution='Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
                     url="https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png"
@@ -79,17 +85,41 @@ class BushfireAnimation extends React.Component {
                 <div style={{
                     position: 'absolute',
                     top: '10px',
-                    right: '10px',
+                    left: '10px',
                     boxShadow: '0px 0px 5px #888888',
                     background: "white",
                     padding: "5px",
                     zIndex: 500,
-                    fontSize: "5em"
+                    fontSize: "2em",
+                    opacity: 0.8
                 }}>
-                    { this.state.year } - { this.state.year+1 }
+                    { this.state.year-1 } - { this.state.year }
                 </div>
             </MapContainer>
-        );
+            <div style={{
+                margin: "-5px auto 0 auto",
+                width: (425 * 2) + 'px',
+                background: "#f0f0f0",
+                padding: "10px 0",
+                marginBottom: "100px"
+            }}>
+                <div style={{padding: "5px 40px 13px 40px", color: "#555"}}>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Suspendisse sed lacus et nulla cursus iaculis.
+                    Mauris ipsum massa, rhoncus a laoreet nec, efficitur at arcu.
+                </div>
+
+                <YearSlider ref={el => this.yearSlider = el}
+                            year={2003}
+                            minYear={2003}
+                            maxYear={2020}
+                            inBetweenYears={true}
+                            onChange={year => {
+                                this.setState({ year: year });
+                            }}/>
+
+            </div>
+        </>;
     }
 
     /**
@@ -125,7 +155,7 @@ class BushfireAnimation extends React.Component {
      ***************************************************/
 
     setYear(year) {
-        this.setState({ year: year });
+        this.yearSlider.setValue(year);
     }
 }
 

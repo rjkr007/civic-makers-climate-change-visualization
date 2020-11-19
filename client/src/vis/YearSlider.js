@@ -17,6 +17,7 @@ class YearSlider extends React.Component {
         };
         this.minYear = props['minYear'];
         this.maxYear = props['maxYear'];
+        this.inBetweenYears = props['inBetweenYears'];
     }
 
     /*******************************************************************
@@ -41,7 +42,9 @@ class YearSlider extends React.Component {
                 <label className="map-slider-item"
                        ref={el => {this.mapSliderLabel = el}}
                        style={{width: "6em", textAlign: "center", ...this.extraStyles}}>{
-                           this.state.year
+                           this.inBetweenYears ?
+                               this.state.year-1 + "-" + this.state.year:
+                               this.state.year
                        }</label>
             </form>
         )
