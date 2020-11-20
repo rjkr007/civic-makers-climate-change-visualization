@@ -48,54 +48,97 @@ This is a website that will inform visitors about the following:
 
 <!-- GETTING STARTED -->
 
-## Prerequisites to Getting Started
+##  Getting Started
 
-- Docker Desktop
+For more indepth instructions please see this [link](https://docs.google.com/document/d/1_Xz9BDUdD2zFesFQC_Zl64CHbjufQWjVTdEalExVhr8/edit)
 
-## Getting Started
 
-1. Clone the project source code.
+0. If you are a MAC user, please install Xcode using the following command
+```
+xcode-select --install 
+```
+1. Open a command line interface (Terminal on mac or equivalent on windows)
+
+   *  Tip: For a linux/mac experience on Windows, you can download https://cmder.net/.
+
+2. Install nvm, a version manager for node.js (for more information see: https://github.com/nvm-sh/nvm)
+
+```
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.0/install.sh | bash
+
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+
+nvm --version
+
+```
+3. Install node (version 14.15.1) using nvm, this is the most recent stable version of node.
+
+```
+nvm install 14.15.1
+nvm use node 14.15.1
+```
+3. (optional) Double check you are using the right version of node by typing the following command. It should output v13.14.0
+
+```
+node --version
+```
+
+4. Install a IDE of your choice. Some recommended IDEs include atom or VSCode
+
+
+5. Clone the project source code.
 
 ```
 git clone https://github.com/AVu120/civic-makers-climate-change-visualization.git
 ```
 
-2. Navigate into the project directory.
+6. Navigate into the project directory.
 
 ```
 cd civic-makers-climate-change-visualization
 ```
 
-3. Build the client & server docker images, run them as containers and have them talking to each other in 1 command.
+7. Navigate to clients folder and run npm install
 
 ```
-docker-compose up
+cd client
+npm install
+```
+9. run npm start (while in clients folder)
+
+```
+npm start
 ```
 
-- Wait until both containers are up and running before proceeding.
-- Client is running on port 3000.
-- Server is running/listening on port 5000.
+10. In another terminal, navigate to the server folder and install express and nodemon
 
-4. When necessary, install only the client dependencies you need (e.g. react-scripts to 'npm run build' and testing libraries).
+```
+cd server
+npm i express nodemon
+```
+
+11. Run npm start (while in server folder)
+
+```
+npm start
+```
+
+12. Go to http://localhost:3000/ and check you see the following screenshot.
+
+![image](Final)
+
+##  Starting up the development environment after first set up
+
+
+1. Repeat steps 6 to 12 from the above section Getting Started.
+
+2. When necessary, install only the client dependencies you need (e.g. react-scripts to 'npm run build' and testing libraries).
 
 ```
 cd client
 npm i react-scripts etc.
 ```
-
-5. When you need to add new npm packages to an image/container, stop that container first, then run
-
-```
-docker-compose build <service-name>
-```
-
-then run
-
-```
-docker-compose up
-```
-
-to restart all the containers (with the new packages).
 
 ## Accessing the Application
 
@@ -157,13 +200,15 @@ Contributions are what make the open source community such an amazing place to b
 
 ## Contributors
 
-- [mishfish123](https://github.com/mishfish123)
-- [AVu120](https://github.com/AVu120)
-- [mansisheth13](https://github.com/mansisheth13)
 - [hqtan](https://github.com/hqtan)
 - [k7n4n5t3w4rt](https://github.com/k7n4n5t3w4rt)
 - [izzypeskett](https://github.com/izzypeskett)
+- [mcyph](https://github.com/mcyph)
+- [mishfish123](https://github.com/mishfish123)
+- [mansisheth13](https://github.com/mansisheth13)
 - [annemariejayatilake](https://github.com/annemariejayatilake)
+- [AVu120](https://github.com/AVu120)
+
 
 <!-- LICENSE -->
 
