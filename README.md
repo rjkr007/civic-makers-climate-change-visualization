@@ -55,12 +55,12 @@ For more indepth instructions please see this [link](https://docs.google.com/doc
 
    *  Tip: For a linux/mac experience on Windows, you can download https://cmder.net/.
 
-0. If you are a MAC user, please install Xcode using the following command
+1. If you are a MAC user, please install Xcode using the following command
 ```
 xcode-select --install 
 ```
 
-0. Install nvm, a version manager for node.js (for more information see: https://github.com/nvm-sh/nvm)
+2. Install nvm, a version manager for node.js (for more information see: https://github.com/nvm-sh/nvm)
 
 ```
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.0/install.sh | bash
@@ -72,25 +72,25 @@ nvm --version
 
 ```
 
-0. Clone the project source code.
+3. Clone the project source code.
 
 ```
 git clone https://github.com/AVu120/civic-makers-climate-change-visualization.git
 ```
 
-0. Navigate into the project directory.
+4. Navigate into the project directory.
 
 ```
 cd civic-makers-climate-change-visualization
 ```
 
-0. Install node using nvm:
+5. Install node using nvm:
 
 ```
 nvm install
 nvm use
 ```
-0. Double check you are using the right version of node by typing the following command. the version number should match the version number mentioned in [.nvmrc](./nvmrc) file:
+6. Double check you are using the right version of node by typing the following command. the version number should match the version number mentioned in [.nvmrc](./nvmrc) file:
 
 ```
 $ cat .nvmrc 
@@ -100,19 +100,19 @@ $ node --version
 v14.15.1
 ```
 
-0. Navigate to clients folder and run npm install
+7. Navigate to clients folder and run npm install
 
 ```
 cd client
 npm install
 ```
-0. run npm start (while in clients folder)
+8. run npm start (while in clients folder)
 
 ```
 npm start
 ```
 
-0. In another terminal, navigate to the server folder and install express and nodemon
+9. In another terminal, navigate to the server folder and install express and nodemon
 
 ```
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
@@ -122,15 +122,13 @@ cd server
 npm i express nodemon
 ```
 
-0. Run npm start (while in server folder)
+10. Run npm start (while in server folder)
 
 ```
 npm start
 ```
 
-0. Go to http://localhost:3000/ and check you see the following screenshot.
-
-![image](Final)
+11. Go to http://localhost:3000/ . You should see a short welcome message if the app is running.
 
 ##  Starting up the development environment after first set up
 
