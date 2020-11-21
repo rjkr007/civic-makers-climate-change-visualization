@@ -11,7 +11,6 @@
 
 - [About the Project](#about-the-project)
 - [Built With](#built-with)
-- [Prerequisites to Getting Started](#prerequisites-to-getting-started)
 - [Getting Started](#getting-started)
 - [Accessing the Application](#accessing-the-application)
 - [How to Deploy the Application](#how-to-deploy-the-application)
@@ -25,8 +24,6 @@
 <!-- ABOUT THE PROJECT -->
 
 ## About The Project
-
-<!-- [![Product Name Screen Shot][product-screenshot]](https://example.com) -->
 
 This is a website that will inform visitors about the following:
 
@@ -50,16 +47,22 @@ This is a website that will inform visitors about the following:
 
 ##  Getting Started
 
+Follow the instructions below to set up your local development environment.
+
+The instructions will guide you to deploy two services locally:
+- a 'client' service that serves up the react app
+- a test api service (that the react app uses)
+
 For more indepth instructions please see this [link](https://docs.google.com/document/d/1_Xz9BDUdD2zFesFQC_Zl64CHbjufQWjVTdEalExVhr8/edit)
 
+0. Open a command line interface (Terminal on mac or equivalent on windows)
 
-0. If you are a MAC user, please install Xcode using the following command
+   *  Tip: For a linux/mac experience on Windows, you can download https://cmder.net/.
+
+1. If you are a MAC user, please install Xcode using the following command
 ```
 xcode-select --install 
 ```
-1. Open a command line interface (Terminal on mac or equivalent on windows)
-
-   *  Tip: For a linux/mac experience on Windows, you can download https://cmder.net/.
 
 2. Install nvm, a version manager for node.js (for more information see: https://github.com/nvm-sh/nvm)
 
@@ -72,76 +75,63 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 nvm --version
 
 ```
-3. Install node (version 14.15.1) using nvm, this is the most recent stable version of node.
 
-```
-nvm install 14.15.1
-nvm use node 14.15.1
-```
-3. (optional) Double check you are using the right version of node by typing the following command. It should output v13.14.0
-
-```
-node --version
-```
-
-4. Install a IDE of your choice. Some recommended IDEs include atom or VSCode
-
-
-5. Clone the project source code.
+3. Clone the project source code.
 
 ```
 git clone https://github.com/AVu120/civic-makers-climate-change-visualization.git
 ```
 
-6. Navigate into the project directory.
+4. Navigate into the project directory.
 
 ```
 cd civic-makers-climate-change-visualization
 ```
 
-7. Navigate to clients folder and run npm install
+5. Install node using nvm:
+
+```
+nvm install
+nvm use
+```
+6. Double check you are using the right version of node by typing the following command. the version number should match the version number mentioned in [.nvmrc](./.nvmrc) file:
+
+```
+$ cat .nvmrc 
+14.15.1
+
+$ node --version
+v14.15.1
+```
+
+7. To start up the client service, navigate to `client/` folder and run npm install
 
 ```
 cd client
 npm install
 ```
-9. run npm start (while in clients folder)
+run npm start (while in clients folder)
 
 ```
 npm start
 ```
 
-10. In another terminal, navigate to the server folder and install express and nodemon
+8. To start up the test api service, open up another terminal, then navigate to the `server/` folder and install express and nodemon:
 
 ```
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-
+# go to the project directory
+cd civic-makers-climate-change-visualization
+nvm use
 cd server
-npm i express nodemon
+npm install
 ```
-
-11. Run npm start (while in server folder)
-
+run npm start (while in `server/` folder):
 ```
 npm start
 ```
 
-12. Go to http://localhost:3000/ and check you see the following screenshot.
+9. Go to http://localhost:3000/ . You should see a short welcome message if the app is running.
 
-![image](Final)
-
-##  Starting up the development environment after first set up
-
-
-1. Repeat steps 6 to 12 from the above section Getting Started.
-
-2. When necessary, install only the client dependencies you need (e.g. react-scripts to 'npm run build' and testing libraries).
-
-```
-cd client
-npm i react-scripts etc.
-```
 
 ## Accessing the Application
 
