@@ -11,8 +11,8 @@
 
 - [About the Project](#about-the-project)
 - [Built With](#built-with)
-- [Prerequisites to Getting Started](#prerequisites-to-getting-started)
 - [Getting Started](#getting-started)
+- [Starting up the development environment after first set up](#starting-up-the-development-environment-after-first-set-up)
 - [Accessing the Application](#accessing-the-application)
 - [How to Deploy the Application](#how-to-deploy-the-application)
 - [Contributing](#contributing)
@@ -25,8 +25,6 @@
 <!-- ABOUT THE PROJECT -->
 
 ## About The Project
-
-<!-- [![Product Name Screen Shot][product-screenshot]](https://example.com) -->
 
 This is a website that will inform visitors about the following:
 
@@ -53,15 +51,16 @@ This is a website that will inform visitors about the following:
 For more indepth instructions please see this [link](https://docs.google.com/document/d/1_Xz9BDUdD2zFesFQC_Zl64CHbjufQWjVTdEalExVhr8/edit)
 
 
+0. Open a command line interface (Terminal on mac or equivalent on windows)
+
+   *  Tip: For a linux/mac experience on Windows, you can download https://cmder.net/.
+
 0. If you are a MAC user, please install Xcode using the following command
 ```
 xcode-select --install 
 ```
-1. Open a command line interface (Terminal on mac or equivalent on windows)
 
-   *  Tip: For a linux/mac experience on Windows, you can download https://cmder.net/.
-
-2. Install nvm, a version manager for node.js (for more information see: https://github.com/nvm-sh/nvm)
+0. Install nvm, a version manager for node.js (for more information see: https://github.com/nvm-sh/nvm)
 
 ```
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.0/install.sh | bash
@@ -72,46 +71,48 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 nvm --version
 
 ```
-3. Install node (version 14.15.1) using nvm, this is the most recent stable version of node.
 
-```
-nvm install 14.15.1
-nvm use node 14.15.1
-```
-3. (optional) Double check you are using the right version of node by typing the following command. It should output v13.14.0
-
-```
-node --version
-```
-
-4. Install a IDE of your choice. Some recommended IDEs include atom or VSCode
-
-
-5. Clone the project source code.
+0. Clone the project source code.
 
 ```
 git clone https://github.com/AVu120/civic-makers-climate-change-visualization.git
 ```
 
-6. Navigate into the project directory.
+0. Navigate into the project directory.
 
 ```
 cd civic-makers-climate-change-visualization
 ```
 
-7. Navigate to clients folder and run npm install
+0. Install node using nvm:
+
+```
+nvm install
+nvm use
+```
+0. Double check you are using the right version of node by typing the following command. the version number should match the version number mentioned in [.nvmrc](./nvmrc) file:
+
+```
+$ cat .nvmrc 
+14.15.1
+
+$ node --version
+v14.15.1
+```
+
+0. Navigate to clients folder and run npm install
 
 ```
 cd client
 npm install
 ```
-9. run npm start (while in clients folder)
+0. run npm start (while in clients folder)
 
 ```
 npm start
 ```
 
-10. In another terminal, navigate to the server folder and install express and nodemon
+0. In another terminal, navigate to the server folder and install express and nodemon
 
 ```
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
@@ -121,20 +122,19 @@ cd server
 npm i express nodemon
 ```
 
-11. Run npm start (while in server folder)
+0. Run npm start (while in server folder)
 
 ```
 npm start
 ```
 
-12. Go to http://localhost:3000/ and check you see the following screenshot.
+0. Go to http://localhost:3000/ and check you see the following screenshot.
 
 ![image](Final)
 
 ##  Starting up the development environment after first set up
 
-
-1. Repeat steps 6 to 12 from the above section Getting Started.
+1. If you haven't already done so, run the steps from the above [Getting Started section](#getting-started).
 
 2. When necessary, install only the client dependencies you need (e.g. react-scripts to 'npm run build' and testing libraries).
 
