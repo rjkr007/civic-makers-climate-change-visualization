@@ -94,7 +94,7 @@ cd civic-makers-climate-change-visualization
 nvm install
 nvm use
 ```
-6. Double check you are using the right version of node by typing the following command. the version number should match the version number mentioned in [.nvmrc](./nvmrc) file:
+6. Double check you are using the right version of node by typing the following command. the version number should match the version number mentioned in [.nvmrc](./.nvmrc) file:
 
 ```
 $ cat .nvmrc 
