@@ -51,7 +51,7 @@ Follow the instructions below to set up your local development environment.
 
 The instructions will guide you to deploy two services locally:
 - a 'client' service that serves up the react app
-- a test api service
+- a test api service (that the react app uses)
 
 For more indepth instructions please see this [link](https://docs.google.com/document/d/1_Xz9BDUdD2zFesFQC_Zl64CHbjufQWjVTdEalExVhr8/edit)
 
