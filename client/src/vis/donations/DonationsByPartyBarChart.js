@@ -101,7 +101,6 @@ class DonationsByPartyBarChart extends React.Component {
                     type: 'shadow'
                 },
                 formatter: (params) => {
-                    console.log(JSON.stringify(params));
                     let that = this;
                     return (
                         `<div>Party ${params[0].axisValueLabel}</div>` +
@@ -220,11 +219,11 @@ class DonationsByPartyBarChart extends React.Component {
      * @private
      */
     __getSeries(yearString) {
+        var keys = ['Oil and Gas', 'Coal', 'Coal and Gas', 'All', 'Gas', 'CSG'];
         let r = [],
             yAxisData = new Set(),
             max = 0,
             donations = this.__donationsByParty,
-            keys = ['Oil and Gas', 'Coal', 'Coal and Gas', 'All', 'Gas', 'CSG'],
             parties = [
                 ['Liberal/National Party', 'LNP'],
                 ['Labor Party', 'ALP'],
@@ -233,11 +232,18 @@ class DonationsByPartyBarChart extends React.Component {
                 ['KAP', 'KAP']
             ];
 
-        for (let key of keys) {
+        for (let key of keys.slice(0)) {
+            let found = false;
             for (let [partyKey, partyMapping] of parties) {
                 if ((donations[yearString][partyKey] || {})[key]) {
                     yAxisData.add(partyMapping)
+                    found = true;
                 }
+            }
+            if (!found) {
+                keys = keys.filter(i => {
+                    return i !== key
+                })
             }
         }
         let yAxisOut = [];
@@ -303,7 +309,7 @@ class DonationsByPartyBarChart extends React.Component {
 
     componentDidMount() {
         // Animate once only!
-        setTimeout(this.__nextAnimationFrame.bind(this), 500);
+        setTimeout(this.__nextAnimationFrame.bind(this), 1000);
     }
 
     /**
@@ -318,7 +324,7 @@ class DonationsByPartyBarChart extends React.Component {
 
         if (year !== 2018) {
             this.yearSlider.setValue(year+1)
-            setTimeout(this.__nextAnimationFrame.bind(this), 500);
+            setTimeout(this.__nextAnimationFrame.bind(this), 1000);
         }
     }
 }
