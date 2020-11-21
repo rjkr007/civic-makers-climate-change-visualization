@@ -45,7 +45,7 @@ This is a website that will inform visitors about the following:
 
 <!-- GETTING STARTED -->
 
-##  Getting Started:
+##  Getting Started
 
 Follow the instructions below to set up your local development environment.
 
