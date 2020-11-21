@@ -12,7 +12,6 @@
 - [About the Project](#about-the-project)
 - [Built With](#built-with)
 - [Getting Started](#getting-started)
-- [Starting up the development environment after first set up](#starting-up-the-development-environment-after-first-set-up)
 - [Accessing the Application](#accessing-the-application)
 - [How to Deploy the Application](#how-to-deploy-the-application)
 - [Contributing](#contributing)
@@ -46,10 +45,15 @@ This is a website that will inform visitors about the following:
 
 <!-- GETTING STARTED -->
 
-##  Getting Started
+##  Getting Started:
+
+Follow the instructions below to set up your local development environment.
+
+The instructions will guide you to deploy two services locally:
+- a 'client' service that serves up the react app
+- a test api service
 
 For more indepth instructions please see this [link](https://docs.google.com/document/d/1_Xz9BDUdD2zFesFQC_Zl64CHbjufQWjVTdEalExVhr8/edit)
-
 
 0. Open a command line interface (Terminal on mac or equivalent on windows)
 
@@ -100,19 +104,19 @@ $ node --version
 v14.15.1
 ```
 
-7. Navigate to clients folder and run npm install
+7. To start up the client service, navigate to `client/` folder and run npm install
 
 ```
 cd client
 npm install
 ```
-8. run npm start (while in clients folder)
+run npm start (while in clients folder)
 
 ```
 npm start
 ```
 
-9. In another terminal, navigate to the server folder and install express and nodemon
+8. To start up the test api service, open up another terminal, then navigate to the `server/` folder and install express and nodemon:
 
 ```
 # go to the project directory
@@ -121,25 +125,13 @@ nvm use
 cd server
 npm install
 ```
-
-10. Run npm start (while in server folder)
-
+run npm start (while in `server/` folder):
 ```
 npm start
 ```
 
-11. Go to http://localhost:3000/ . You should see a short welcome message if the app is running.
+9. Go to http://localhost:3000/ . You should see a short welcome message if the app is running.
 
-##  Starting up the development environment after first set up
-
-1. If you haven't already done so, run the steps from the above [Getting Started section](#getting-started).
-
-2. When necessary, install only the client dependencies you need (e.g. react-scripts to 'npm run build' and testing libraries).
-
-```
-cd client
-npm i react-scripts etc.
-```
 
 ## Accessing the Application
 
