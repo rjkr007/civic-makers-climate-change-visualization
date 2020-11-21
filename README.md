@@ -115,11 +115,11 @@ npm start
 9. In another terminal, navigate to the server folder and install express and nodemon
 
 ```
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-
+# go to the project directory
+cd civic-makers-climate-change-visualization
+nvm use
 cd server
-npm i express nodemon
+npm install
 ```
 
 10. Run npm start (while in server folder)
