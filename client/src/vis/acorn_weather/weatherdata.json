@@ -1,0 +1,674 @@
+{
+    "1019": {
+        "lat": -14.3,
+        "long": 126.65,
+        "name": "Kalumburu",
+        "stnum": 1019
+    },
+    "2012": {
+        "lat": -18.23,
+        "long": 127.66,
+        "name": "Halls Creek Meteorological Office",
+        "stnum": 2012
+    },
+    "3003": {
+        "lat": -17.95,
+        "long": 122.24,
+        "name": "Broome Airport",
+        "stnum": 3003
+    },
+    "4032": {
+        "lat": -20.37,
+        "long": 118.63,
+        "name": "Port Hedland Airport",
+        "stnum": 4032
+    },
+    "4106": {
+        "lat": -21.18,
+        "long": 119.75,
+        "name": "Marble Bar",
+        "stnum": 4106
+    },
+    "5007": {
+        "lat": -22.24,
+        "long": 114.1,
+        "name": "Learmonth Airport",
+        "stnum": 5007
+    },
+    "5026": {
+        "lat": -22.24,
+        "long": 118.34,
+        "name": "Wittenoom",
+        "stnum": 5026
+    },
+    "6011": {
+        "lat": -24.89,
+        "long": 113.67,
+        "name": "Carnarvon Airport",
+        "stnum": 6011
+    },
+    "7045": {
+        "lat": -26.61,
+        "long": 118.54,
+        "name": "Meekatharra Airport",
+        "stnum": 7045
+    },
+    "8296": {
+        "lat": -29.2,
+        "long": 116.02,
+        "name": "Morawa Airport",
+        "stnum": 8296
+    },
+    "8297": {
+        "lat": -30.28,
+        "long": 116.67,
+        "name": "Dalwallinu",
+        "stnum": 8297
+    },
+    "8315": {
+        "lat": -28.8,
+        "long": 114.7,
+        "name": "Geraldton Airport",
+        "stnum": 8315
+    },
+    "9021": {
+        "lat": -31.93,
+        "long": 115.98,
+        "name": "Perth Airport",
+        "stnum": 9021
+    },
+    "9518": {
+        "lat": -34.37,
+        "long": 115.14,
+        "name": "Cape Leeuwin",
+        "stnum": 9518
+    },
+    "9617": {
+        "lat": -33.95,
+        "long": 116.13,
+        "name": "Bridgetown",
+        "stnum": 9617
+    },
+    "9789": {
+        "lat": -33.83,
+        "long": 121.89,
+        "name": "Esperance",
+        "stnum": 9789
+    },
+    "9999": {
+        "lat": -34.94,
+        "long": 117.82,
+        "name": "Albany Airport",
+        "stnum": 9999
+    },
+    "10092": {
+        "lat": -31.48,
+        "long": 118.28,
+        "name": "Merredin",
+        "stnum": 10092
+    },
+    "10286": {
+        "lat": -31.62,
+        "long": 117.22,
+        "name": "Cunderdin Airfield",
+        "stnum": 10286
+    },
+    "10916": {
+        "lat": -33.69,
+        "long": 117.61,
+        "name": "Katanning",
+        "stnum": 10916
+    },
+    "10917": {
+        "lat": -32.67,
+        "long": 116.67,
+        "name": "Wandering",
+        "stnum": 10917
+    },
+    "11003": {
+        "lat": -31.68,
+        "long": 128.9,
+        "name": "Eucla",
+        "stnum": 11003
+    },
+    "11052": {
+        "lat": -30.85,
+        "long": 128.11,
+        "name": "Forrest",
+        "stnum": 11052
+    },
+    "12038": {
+        "lat": -30.78,
+        "long": 121.45,
+        "name": "Kalgoorlie-Boulder Airport",
+        "stnum": 12038
+    },
+    "13017": {
+        "lat": -25.03,
+        "long": 128.3,
+        "name": "Giles Meteorological Office",
+        "stnum": 13017
+    },
+    "14015": {
+        "lat": -12.42,
+        "long": 130.89,
+        "name": "Darwin Airport",
+        "stnum": 14015
+    },
+    "14825": {
+        "lat": -16.4,
+        "long": 131.01,
+        "name": "Victoria River Downs",
+        "stnum": 14825
+    },
+    "15135": {
+        "lat": -19.64,
+        "long": 134.18,
+        "name": "Tennant Creek Airport",
+        "stnum": 15135
+    },
+    "15590": {
+        "lat": -23.8,
+        "long": 133.89,
+        "name": "Alice Springs Airport",
+        "stnum": 15590
+    },
+    "15666": {
+        "lat": -20.18,
+        "long": 130.01,
+        "name": "Rabbit Flat",
+        "stnum": 15666
+    },
+    "16001": {
+        "lat": -31.16,
+        "long": 136.81,
+        "name": "Woomera Aerodrome",
+        "stnum": 16001
+    },
+    "16098": {
+        "lat": -30.71,
+        "long": 134.58,
+        "name": "Tarcoola Aero",
+        "stnum": 16098
+    },
+    "17043": {
+        "lat": -27.56,
+        "long": 135.45,
+        "name": "Oodnadatta Airport",
+        "stnum": 17043
+    },
+    "17126": {
+        "lat": -29.66,
+        "long": 138.07,
+        "name": "Marree Aero",
+        "stnum": 17126
+    },
+    "18012": {
+        "lat": -32.13,
+        "long": 133.7,
+        "name": "Ceduna Amo",
+        "stnum": 18012
+    },
+    "18044": {
+        "lat": -33.13,
+        "long": 135.55,
+        "name": "Kyancutta",
+        "stnum": 18044
+    },
+    "18192": {
+        "lat": -34.6,
+        "long": 135.88,
+        "name": "Port Lincoln Aws",
+        "stnum": 18192
+    },
+    "21133": {
+        "lat": -33.77,
+        "long": 138.22,
+        "name": "Rayville Park",
+        "stnum": 21133
+    },
+    "22823": {
+        "lat": -35.75,
+        "long": 136.6,
+        "name": "Cape Borda",
+        "stnum": 22823
+    },
+    "23090": {
+        "lat": -34.92,
+        "long": 138.62,
+        "name": "Kent Town",
+        "stnum": 23090
+    },
+    "23373": {
+        "lat": -34.48,
+        "long": 139.01,
+        "name": "Nuriootpa Pirsa",
+        "stnum": 23373
+    },
+    "26021": {
+        "lat": -37.75,
+        "long": 140.77,
+        "name": "Mount Gambier Aero",
+        "stnum": 26021
+    },
+    "26026": {
+        "lat": -37.16,
+        "long": 139.76,
+        "name": "Robe",
+        "stnum": 26026
+    },
+    "27045": {
+        "lat": -12.68,
+        "long": 141.92,
+        "name": "Weipa Aero",
+        "stnum": 27045
+    },
+    "27058": {
+        "lat": -10.58,
+        "long": 142.29,
+        "name": "Horn Island",
+        "stnum": 27058
+    },
+    "28004": {
+        "lat": -16.0,
+        "long": 144.08,
+        "name": "Palmerville",
+        "stnum": 28004
+    },
+    "29063": {
+        "lat": -17.69,
+        "long": 141.07,
+        "name": "Normanton Airport",
+        "stnum": 29063
+    },
+    "29077": {
+        "lat": -17.75,
+        "long": 139.54,
+        "name": "Burketown Airport",
+        "stnum": 29077
+    },
+    "30045": {
+        "lat": -20.73,
+        "long": 143.14,
+        "name": "Richmond Post Office",
+        "stnum": 30045
+    },
+    "30124": {
+        "lat": -18.3,
+        "long": 143.53,
+        "name": "Georgetown Airport",
+        "stnum": 30124
+    },
+    "31011": {
+        "lat": -16.87,
+        "long": 145.75,
+        "name": "Cairns Aero",
+        "stnum": 31011
+    },
+    "32040": {
+        "lat": -19.25,
+        "long": 146.77,
+        "name": "Townsville Aero",
+        "stnum": 32040
+    },
+    "33119": {
+        "lat": -21.12,
+        "long": 149.22,
+        "name": "Mackay M.O",
+        "stnum": 33119
+    },
+    "34084": {
+        "lat": -20.05,
+        "long": 146.27,
+        "name": "Charters Towers Airport",
+        "stnum": 34084
+    },
+    "36007": {
+        "lat": -23.55,
+        "long": 145.29,
+        "name": "Barcaldine Post Office",
+        "stnum": 36007
+    },
+    "36031": {
+        "lat": -23.44,
+        "long": 144.28,
+        "name": "Longreach Aero",
+        "stnum": 36031
+    },
+    "37010": {
+        "lat": -19.92,
+        "long": 138.12,
+        "name": "Camooweal Township",
+        "stnum": 37010
+    },
+    "38003": {
+        "lat": -22.91,
+        "long": 139.9,
+        "name": "Boulia Airport",
+        "stnum": 38003
+    },
+    "38026": {
+        "lat": -25.9,
+        "long": 139.35,
+        "name": "Birdsville Airport",
+        "stnum": 38026
+    },
+    "39066": {
+        "lat": -25.62,
+        "long": 151.62,
+        "name": "Gayndah Airport",
+        "stnum": 39066
+    },
+    "39083": {
+        "lat": -23.38,
+        "long": 150.48,
+        "name": "Rockhampton Aero",
+        "stnum": 39083
+    },
+    "39128": {
+        "lat": -24.91,
+        "long": 152.32,
+        "name": "Bundaberg Aero",
+        "stnum": 39128
+    },
+    "40004": {
+        "lat": -27.63,
+        "long": 152.71,
+        "name": "Amberley Amo",
+        "stnum": 40004
+    },
+    "40043": {
+        "lat": -27.03,
+        "long": 153.47,
+        "name": "Cape Moreton Lighthouse",
+        "stnum": 40043
+    },
+    "40842": {
+        "lat": -27.39,
+        "long": 153.13,
+        "name": "Brisbane Aero",
+        "stnum": 40842
+    },
+    "42112": {
+        "lat": -26.66,
+        "long": 150.18,
+        "name": "Miles Constance Street",
+        "stnum": 42112
+    },
+    "43109": {
+        "lat": -28.05,
+        "long": 148.59,
+        "name": "St George Airport",
+        "stnum": 43109
+    },
+    "44021": {
+        "lat": -26.41,
+        "long": 146.26,
+        "name": "Charleville Aero",
+        "stnum": 44021
+    },
+    "45025": {
+        "lat": -27.99,
+        "long": 143.82,
+        "name": "Thargomindah Airport",
+        "stnum": 45025
+    },
+    "46012": {
+        "lat": -31.52,
+        "long": 143.39,
+        "name": "Wilcannia Aerodrome Aws",
+        "stnum": 46012
+    },
+    "46126": {
+        "lat": -29.44,
+        "long": 142.06,
+        "name": "Tibooburra Airport",
+        "stnum": 46126
+    },
+    "48027": {
+        "lat": -31.48,
+        "long": 145.83,
+        "name": "Cobar Mo",
+        "stnum": 48027
+    },
+    "48245": {
+        "lat": -30.04,
+        "long": 145.95,
+        "name": "Bourke Airport Aws",
+        "stnum": 48245
+    },
+    "50017": {
+        "lat": -33.94,
+        "long": 147.2,
+        "name": "West Wyalong Airport Aws",
+        "stnum": 50017
+    },
+    "52088": {
+        "lat": -30.04,
+        "long": 148.12,
+        "name": "Walgett Airport Aws",
+        "stnum": 52088
+    },
+    "53115": {
+        "lat": -29.49,
+        "long": 149.85,
+        "name": "Moree Aero",
+        "stnum": 53115
+    },
+    "55024": {
+        "lat": -31.03,
+        "long": 150.27,
+        "name": "Gunnedah Resource Centre",
+        "stnum": 55024
+    },
+    "56242": {
+        "lat": -29.78,
+        "long": 151.11,
+        "name": "Inverell (Raglan St)",
+        "stnum": 56242
+    },
+    "58012": {
+        "lat": -29.43,
+        "long": 153.36,
+        "name": "Yamba Pilot Station",
+        "stnum": 58012
+    },
+    "59151": {
+        "lat": -30.32,
+        "long": 153.12,
+        "name": "Coffs Harbour Airport",
+        "stnum": 59151
+    },
+    "60139": {
+        "lat": -31.43,
+        "long": 152.87,
+        "name": "Port Macquarie Airport Aws",
+        "stnum": 60139
+    },
+    "61078": {
+        "lat": -32.79,
+        "long": 151.84,
+        "name": "Williamtown Raaf",
+        "stnum": 61078
+    },
+    "61363": {
+        "lat": -32.03,
+        "long": 150.83,
+        "name": "Scone Airport Aws",
+        "stnum": 61363
+    },
+    "63005": {
+        "lat": -33.43,
+        "long": 149.56,
+        "name": "Bathurst Agricultural Station",
+        "stnum": 63005
+    },
+    "65070": {
+        "lat": -32.22,
+        "long": 148.58,
+        "name": "Dubbo Airport Aws",
+        "stnum": 65070
+    },
+    "66062": {
+        "lat": -33.86,
+        "long": 151.21,
+        "name": "Sydney (Observatory Hill)",
+        "stnum": 66062
+    },
+    "67105": {
+        "lat": -33.6,
+        "long": 150.78,
+        "name": "Richmond Raaf",
+        "stnum": 67105
+    },
+    "68072": {
+        "lat": -34.95,
+        "long": 150.54,
+        "name": "Nowra Ran Air Station Aws",
+        "stnum": 68072
+    },
+    "68151": {
+        "lat": -35.09,
+        "long": 150.8,
+        "name": "Point Perpendicular Aws",
+        "stnum": 68151
+    },
+    "69018": {
+        "lat": -35.91,
+        "long": 150.15,
+        "name": "Moruya Heads Pilot Station",
+        "stnum": 69018
+    },
+    "70351": {
+        "lat": -35.31,
+        "long": 149.2,
+        "name": "Canberra Airport",
+        "stnum": 70351
+    },
+    "72150": {
+        "lat": -35.16,
+        "long": 147.46,
+        "name": "Wagga Wagga Amo",
+        "stnum": 72150
+    },
+    "72161": {
+        "lat": -35.94,
+        "long": 148.38,
+        "name": "Cabramurra Smhea Aws",
+        "stnum": 72161
+    },
+    "74258": {
+        "lat": -35.56,
+        "long": 144.95,
+        "name": "Deniliquin Airport Aws",
+        "stnum": 74258
+    },
+    "76031": {
+        "lat": -34.24,
+        "long": 142.09,
+        "name": "Mildura Airport",
+        "stnum": 76031
+    },
+    "78015": {
+        "lat": -36.31,
+        "long": 141.65,
+        "name": "Nhill Aerodrome",
+        "stnum": 78015
+    },
+    "80023": {
+        "lat": -35.72,
+        "long": 143.92,
+        "name": "Kerang",
+        "stnum": 80023
+    },
+    "82039": {
+        "lat": -36.1,
+        "long": 146.51,
+        "name": "Rutherglen Research",
+        "stnum": 82039
+    },
+    "84016": {
+        "lat": -37.57,
+        "long": 149.92,
+        "name": "Gabo Island Lighthouse",
+        "stnum": 84016
+    },
+    "84145": {
+        "lat": -37.69,
+        "long": 148.47,
+        "name": "Orbost",
+        "stnum": 84145
+    },
+    "85072": {
+        "lat": -38.12,
+        "long": 147.13,
+        "name": "East Sale",
+        "stnum": 85072
+    },
+    "85096": {
+        "lat": -39.13,
+        "long": 146.42,
+        "name": "Wilsons Promontory Lighthouse",
+        "stnum": 85096
+    },
+    "86338": {
+        "lat": -37.83,
+        "long": 144.98,
+        "name": "Melbourne (Olympic Park)",
+        "stnum": 86338
+    },
+    "87031": {
+        "lat": -37.86,
+        "long": 144.76,
+        "name": "Laverton Raaf",
+        "stnum": 87031
+    },
+    "90015": {
+        "lat": -38.86,
+        "long": 143.51,
+        "name": "Cape Otway Lighthouse",
+        "stnum": 90015
+    },
+    "91293": {
+        "lat": -41.05,
+        "long": 146.79,
+        "name": "Low Head",
+        "stnum": 91293
+    },
+    "91311": {
+        "lat": -41.55,
+        "long": 147.22,
+        "name": "Launceston Airport",
+        "stnum": 91311
+    },
+    "92045": {
+        "lat": -40.99,
+        "long": 148.35,
+        "name": "Larapuna (Eddystone Point)",
+        "stnum": 92045
+    },
+    "94010": {
+        "lat": -43.49,
+        "long": 147.15,
+        "name": "Cape Bruny Lighthouse",
+        "stnum": 94010
+    },
+    "94029": {
+        "lat": -42.89,
+        "long": 147.33,
+        "name": "Hobart (Ellerslie Road)",
+        "stnum": 94029
+    },
+    "94220": {
+        "lat": -42.99,
+        "long": 147.07,
+        "name": "Grove (Research Station)",
+        "stnum": 94220
+    },
+    "96003": {
+        "lat": -42.28,
+        "long": 146.28,
+        "name": "Butlers Gorge",
+        "stnum": 96003
+    }
+}
