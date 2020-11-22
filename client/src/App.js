@@ -5,6 +5,7 @@ import BushfireAnimation from "./vis/bushfires/BushfireAnimation";
 import ACORNWeather from "./vis/acorn_weather/ACORNWeather";
 import DonationsByPartyBarChart from "./vis/donations/DonationsByPartyBarChart";
 import SitesBreachedCoralBleachingChart from "./vis/coral_bleaching/SitesBreachedCoralBleachingChart";
+import SitesAverageTempsChart from "./vis/coral_bleaching/SitesAverageTempsChart";
 
 const App = () => {
   const [state, setState] = useState(null);
@@ -36,6 +37,7 @@ const App = () => {
         <BushfireAnimation/>
         <DonationsByPartyBarChart/>
         <SitesBreachedCoralBleachingChart/>
+        <SitesAverageTempsChart/>
     </div>
   );
 };

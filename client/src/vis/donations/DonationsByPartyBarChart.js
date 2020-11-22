@@ -100,25 +100,7 @@ class DonationsByPartyBarChart extends React.Component {
                 axisPointer: {
                     type: 'shadow'
                 },
-                formatter: (params) => {
-                    let that = this;
-                    return (
-                        `<div>Party ${params[0].axisValueLabel}</div>` +
-                        params.map(param => {
-                            let value = that.__formatAUDollar(param);
-                            return (
-                                `<div style="text-align: left; border-bottom: 1px solid ${param.color}; border-left: 8px solid ${param.color}; padding-left: 3px;">` +
-                                `<span style="padding: 0; display: inline; margin: 0">` +
-                                `${param.seriesName}&nbsp;&nbsp;` +
-                                `<span style="float: right; padding: 0; display: inline; margin: 0">` +
-                                `${value}` +
-                                `</span>` +
-                                `</span>` +
-                                `</div>`
-                            );
-                        }).join('')
-                    );
-                }
+                formatter: this.__tooltipFormatter.bind(this)
             },
             legend: { top: 50 },
             grid: { top: 90, bottom: 40, left: 140, right: 50 },
@@ -192,6 +174,33 @@ class DonationsByPartyBarChart extends React.Component {
                 />
             </div>
         </>;
+    }
+
+    /**
+     * A fancy tooltip formatter (popups when the user mouses over parties)
+     *
+     * @param params
+     * @returns {string}
+     * @private
+     */
+    __tooltipFormatter(params) {
+        let that = this;
+        return (
+            `<div>Party ${params[0].axisValueLabel}</div>` +
+            params.map(param => {
+                let value = that.__formatAUDollar(param);
+                return (
+                    `<div style="text-align: left; border-bottom: 1px solid ${param.color}; border-left: 8px solid ${param.color}; padding-left: 3px;">` +
+                        `<span style="padding: 0; display: inline; margin: 0">` +
+                            `${param.seriesName}&nbsp;&nbsp;` +
+                            `<span style="float: right; padding: 0; display: inline; margin: 0">` +
+                                `${value}` +
+                            `</span>` +
+                        `</span>` +
+                    `</div>`
+                );
+            }).join('')
+        );
     }
 
     /**
