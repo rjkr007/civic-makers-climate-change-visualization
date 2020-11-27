@@ -13,6 +13,8 @@
   }
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@500&display=swap');
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -35,4 +37,48 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+
+
+.leaflet-popup-tip-container {
+    display: none;
+}
+.leaflet-tooltip {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  text-shadow: 0 0 4px white;
+  font-size: 1.3em;
+}
+.leaflet-container path{
+  transition: fill .1s !important;
+}
+.leaflet-container {
+    background: steelblue !important;
+    outline: 0;
+}
+.leaflet-control-container {
+  position: absolute;
+  right: 56px
+}
+
+
+.full-width-image {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  margin-left: -50vw;
+}
+
+.full-width-image img {
+  width: 100%;
+}
+
+.heading{
+font-size:7vw;
+font-family: 'Public Sans', sans-serif;
+width: 750px;
+margin: 10%;
+
 }
