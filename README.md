@@ -79,7 +79,7 @@ nvm --version
 3. Clone the project source code.
 
 ```
-git clone https://github.com/AVu120/civic-makers-climate-change-visualization.git
+git clone https://github.com/CodeforAustralia/civic-makers-climate-change-visualization.git
 ```
 
 4. Navigate into the project directory.
