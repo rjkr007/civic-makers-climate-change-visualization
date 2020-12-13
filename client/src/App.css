@@ -14,6 +14,7 @@
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@700&display=swap');
 
 .App-header {
   background-color: #282c34;
@@ -81,4 +82,60 @@ font-family: 'Public Sans', sans-serif;
 width: 750px;
 margin: 10%;
 
+}
+
+.however{
+  color: #FDF2E2;
+  font-family: 'Roboto Mono', sans-serif;
+  font-size: 10.5vw;
+  padding-top: 6.2%;
+  padding-bottom: 6.2%;
+}
+.call{
+  background-color: #FDF2E2;
+  min-height: 20vh;
+  font-family: 'Roboto Mono', sans-serif;
+  color:#3C2F29;
+  font-size: 2.1vw;
+  padding-top: 8%;
+  padding-bottom: 17%;
+  padding-left: 15% !important;
+  padding-right: 15% !important;
+}
+
+.sep{
+  background-color: #FFFFF;
+  min-height: 20vh;
+}
+
+.footer{
+  padding-top: 3% !important;
+  padding-left: 5% !important;
+  color: #FFFFFF;
+  background-color: #3C2F29;
+  min-height: 20vh;
+  font-size: 2.1vw;
+  font-family: 'Roboto Mono', sans-serif;
+
+}
+
+.h-text {
+  transform: rotate(-180deg);
+}
+
+p{
+  word-spacing:1%;
+  line-height: 1.25;
+}
+
+.nopadding-left {
+   text-align: right;
+   padding: 0 !important;
+   margin: 0 !important;
+   letter-spacing: 2.5px;
+}
+
+.nopadding-right {
+   text-align: left;
+   letter-spacing: 2.5px;
 }
