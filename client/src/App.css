@@ -1,68 +1,31 @@
-.App {
-  text-align: center;
+
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@700&display=swap');
+
+.fluid{
+  background-color: #FCF4E8;
+  padding: 10px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.title{
+  font-family: 'Public Sans', sans-serif;
+  font-weight: 800;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.links{
+  font-size: 70%;
+  font-family: 'Public Sans', sans-serif;
+  font-weight: 600;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@500&display=swap');
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
+  background-color: #FCF4E8;
+  border-bottom: solid 2px #000000;
+  font-weight: 500;
+  color: #C97E2E !important;
 
-.App-link {
-  color: #61dafb;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-
-
-.leaflet-popup-tip-container {
-    display: none;
-}
-.leaflet-tooltip {
-  background: transparent !important;
-  box-shadow: none !important;
-  border: none !important;
-  text-shadow: 0 0 4px white;
-  font-size: 1.3em;
-}
-.leaflet-container path{
-  transition: fill .1s !important;
-}
-.leaflet-container {
-    background: steelblue !important;
-    outline: 0;
-}
-.leaflet-control-container {
-  position: absolute;
-  right: 56px
-}
-
 
 .full-width-image {
   width: 100vw;
@@ -75,10 +38,138 @@
   width: 100%;
 }
 
-.heading{
-font-size:7vw;
-font-family: 'Public Sans', sans-serif;
-width: 750px;
-margin: 10%;
+.heading {
+  font-size: vw;
+  font-family: "Public Sans", sans-serif;
+  width: 750px;
+  margin: 10%;
+}
 
+.top-right {
+  position: absolute;
+  top: 8px;
+  right: 16px;
+}
+
+.p1{
+  font-size: 4vw;
+  text-align: center;
+  background-color: #FCF4E8;
+  font-family: "Public Sans", sans-serif;
+  padding-top: 12%;
+  padding-bottom: 22%;
+  color: #C98030;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.paragraph-headings {
+  font-size: 4vw;
+  font-family: "Public Sans", sans-serif;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: 1px;
+  word-spacing:1.25%;
+}
+.p2 {
+  font-size: 1.5vw;
+  text-align: center;
+  font-weight: 500;
+  color: #3F342C;
+
+}
+.p3 {
+  font-size: 2vw;
+  font-family: "Public Sans", sans-serif;
+  width: 750px;
+  text-align: center;
+  color: #e68a00;
+  margin: 4%;
+}
+.p4{
+   font-size: 45px;
+
+  /* width: 100px; */
+  text-align: center;
+  margin: 0%;
+}
+.p5{
+  font-size: 45px;
+  text-align: center;
+  margin: 0%;
+}
+
+.call{
+  min-height: 20vh;
+  font-family: 'Roboto Mono', sans-serif;
+  color:#3C2F29;
+  font-size: 2.1vw;
+  padding-top: 8%;
+  padding-bottom: 17%;
+  padding-left: 15% !important;
+  padding-right: 15% !important;
+}
+
+.backgroundforcall{
+  background-color: #FDF2E2;
+}
+
+p{
+  line-height: 1.25;
+}
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  white-space: nowrap;
+
+}
+
+
+.however{
+  color: #FDF2E2;
+  font-family: 'Roboto Mono', sans-serif;
+  font-size: 10.5vw;
+  padding-top: 6.2%;
+  padding-bottom: 6.2%;
+}
+
+.sep{
+  background-color: #FFFFF;
+  min-height: 20vh;
+}
+
+.footer{
+  padding-top: 3% !important;
+  padding-left: 5% !important;
+  color: #FFFFFF;
+  background-color: #3C2F29;
+  min-height: 20vh;
+  font-size: 2.1vw;
+  font-family: 'Roboto Mono', sans-serif;
+
+}
+
+.h-text {
+  transform: rotate(-180deg);
+}
+
+p{
+  word-spacing:1%;
+  line-height: 1.25;
+}
+
+.nopadding-left {
+   text-align: right;
+   padding: 0 !important;
+   margin: 0 !important;
+   letter-spacing: 2.5px;
+}
+
+.nopadding-right {
+   text-align: left;
+   letter-spacing: 2.5px;
 }

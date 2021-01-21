@@ -1,4 +1,6 @@
+
 <br />
+
 <p align="center">
   <h1 align="center"><a href="https://codeforaustralia.github.io/civic-makers-climate-change-visualization/">Civic Makers Climate-Change Visualization</a></h1>
 
@@ -45,11 +47,12 @@ This is a website that will inform visitors about the following:
 
 <!-- GETTING STARTED -->
 
-##  Getting Started
+## Getting Started
 
 Follow the instructions below to set up your local development environment.
 
 The instructions will guide you to deploy two services locally:
+
 - a 'client' service that serves up the react app
 - a test api service (that the react app uses)
 
@@ -57,11 +60,12 @@ For more indepth instructions please see this [link](https://docs.google.com/doc
 
 0. Open a command line interface (Terminal on mac or equivalent on windows)
 
-   *  Tip: For a linux/mac experience on Windows, you can download https://cmder.net/.
+   - Tip: For a linux/mac experience on Windows, you can download https://cmder.net/.
 
 1. If you are a MAC user, please install Xcode using the following command
+
 ```
-xcode-select --install 
+xcode-select --install
 ```
 
 2. Install nvm, a version manager for node.js (for more information see: https://github.com/nvm-sh/nvm)
@@ -94,10 +98,11 @@ cd civic-makers-climate-change-visualization
 nvm install
 nvm use
 ```
+
 6. Double check you are using the right version of node by typing the following command. the version number should match the version number mentioned in [.nvmrc](./.nvmrc) file:
 
 ```
-$ cat .nvmrc 
+$ cat .nvmrc
 14.15.1
 
 $ node --version
@@ -110,6 +115,7 @@ v14.15.1
 cd client
 npm install
 ```
+
 run npm start (while in clients folder)
 
 ```
@@ -125,13 +131,14 @@ nvm use
 cd server
 npm install
 ```
+
 run npm start (while in `server/` folder):
+
 ```
 npm start
 ```
 
 9. Go to http://localhost:3000/ . You should see a short welcome message if the app is running.
-
 
 ## Accessing the Application
 
@@ -144,12 +151,15 @@ On your local development instance, enter `http://localhost:3000` into any web-b
 The application is currently hosted on [Github Pages](https://codeforaustralia.github.io/civic-makers-climate-change-visualization/).
 
 To deploy the app to Github Pages, run the following commands:
+
 ```
 cd client/
 npm install  ## [optional] only install dependencies if you haven't done so earlier!
 npm run deploy
 ```
+
 The command will perform the following actions:
+
 1. build the react app (using `npm run build`)
 2. push the build artifacts to the `gh-pages` branch
 
@@ -175,6 +185,7 @@ Contributions are what make the open source community such an amazing place to b
 6. After 1-2 approvals, the PR will be merged.
 
 ## Asking for Help
+
 - Please ask on our slack channel [#civic-makers-climatechange-dev](https://app.slack.com/client/T02A8KY38/C01DALXS62K) if you:
   - have any questions regarding any of the tasks in our [Trello board](https://trello.com/b/ZXaIkclp)
   - have any questions relating to the development of the climate change app
@@ -204,7 +215,6 @@ Contributions are what make the open source community such an amazing place to b
 - [mansisheth13](https://github.com/mansisheth13)
 - [annemariejayatilake](https://github.com/annemariejayatilake)
 - [AVu120](https://github.com/AVu120)
-
 
 <!-- LICENSE -->
 
