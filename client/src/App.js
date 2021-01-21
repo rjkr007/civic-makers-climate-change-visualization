@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
-import {Nav, NavItem, NavLink } from 'reactstrap';
+
 import {Row, Col} from 'react-bootstrap';
 
 
@@ -14,14 +14,7 @@ const App = () => (
   <div>
   <Container fluid className="fluid"><Navbar className = "App-header" expand="lg">
     <Navbar.Brand className="title" href="#" style={{color: "#C98030"}} >SeeChange.</Navbar.Brand>
-    <Nav className = "top-right">
-    <NavItem>
-          <NavLink className="links" href="#" style={{color: "#C98030"}}>ABOUT THE DATA</NavLink>
-        </NavItem>
-         <NavItem>
-         <NavLink className="links" href="#" style={{color: "#C98030"}}>ABOUT US</NavLink>
-  </NavItem>
-        </Nav>
+  
     </Navbar>
     </Container>
     <Container fluid className = "p1">
